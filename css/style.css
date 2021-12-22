@@ -168,9 +168,11 @@ body {
 
 .header__link::after {
   content: '';
+  display: flex;
   position: absolute;
   width: 37px;
   height: 23px;
   background-image: url('../images/arrow-down.svg');
   background-color: transparent;
+  top: 30px;
 }
