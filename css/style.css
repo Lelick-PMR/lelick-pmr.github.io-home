@@ -165,6 +165,7 @@ body {
   position: relative;
   color: #fff;
   justify-content: center;
+  margin: auto auto 0;
 }
 
 .header__link::after {
