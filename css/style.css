@@ -63,6 +63,10 @@ ul[class] {
   list-style: none;
 }
 
+a {
+  text-decoration: none;
+}
+
 img {
   max-width: 100%;
   display: block;
@@ -154,4 +158,10 @@ body {
   font-size: 90px;
   font-weight: 700;
   line-height: 117px;
+}
+
+.header__link {
+  display: flex;
+  position: relative;
+  color: #fff;
 }
