@@ -164,6 +164,7 @@ body {
   display: flex;
   position: relative;
   color: #fff;
+  justify-content: center;
 }
 
 .header__link::after {
@@ -175,5 +176,4 @@ body {
   background-image: url('../images/arrow-down.svg');
   background-color: transparent;
   top: 30px;
-  justify-content: center;
 }
