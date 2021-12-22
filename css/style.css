@@ -161,7 +161,7 @@ body {
 }
 
 .header__link {
-  display: flex;
+  display: inline-flex;
   position: relative;
   color: #fff;
   justify-content: center;
