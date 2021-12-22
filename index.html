@@ -20,32 +20,32 @@
           <nav class="menu">
             <ul class="menu__list">
               <li class="menu__list-item">
-                <a class="menu__list-link" href="#">
+                <a class="link menu__list-link" href="#">
                   Обо мне
                 </a>
               </li>
-              <li class="menu__list-item">
-                <a class="menu__list-link" href="#">
+              <li class="link menu__list-item">
+                <a class="link menu__list-link" href="#">
                   Навыки
                 </a>
               </li>
-              <li class="menu__list-item">
-                <a class="menu__list-link" href="#">
+              <li class="link menu__list-item">
+                <a class="link menu__list-link" href="#">
                   Услуги
                 </a>
               </li>
-              <li class="menu__list-item">
-                <a class="menu__list-link" href="#">
+              <li class="link menu__list-item">
+                <a class="link menu__list-link" href="#">
                   Портфолио
                 </a>
               </li>
-              <li class="menu__list-item">
-                <a class="menu__list-link" href="#">
+              <li class="link menu__list-item">
+                <a class="link menu__list-link" href="#">
                   Отзывы
                 </a>
               </li>
-              <li class="menu__list-item">
-                <a class="menu__list-link" href="#">
+              <li class="link menu__list-item">
+                <a class="link menu__list-link" href="#">
                   Контакты
                 </a>
               </li>
@@ -58,14 +58,62 @@
     <div class="header__content">
 
       <div class="container">
-        <p class="header__text">
-          Привет, я Иван Иванов <span class="header__profession">frontend-разработчик</span>
-        </p>
-        <a class="header__link" href="#">смотреть работы</a>
-      </div>
+        <h1 class="hidden_title">Услуги и портфолио frontend-разработчика Ивана Иванова</h1>
+        <div class="header__content-inner">
+          <p class="header__text">
+            Привет, я Иван Иванов
+            <span class="header__profession">
+              frontend-разработчик
+            </span>
+          </p>
 
+          <a class="link header__link" href="#">смотреть работы</a>
+
+        </div>
+      </div>
     </div>
   </header>
+
+  <section class="section section__white" id="about">
+    <div class="container">
+      <div class="section__about-inner">
+        <h2 class="section__title">
+          Обо мне
+        </h2>
+        <p class="section__text">
+          Приветствую всех на своём сайте! Меня зовут Иван, я из Киева. Занимаюсь фронтенд-разработкой более года. До
+          разработки
+          занимался нелюбимым делом, ходил на нелюбимую работу, не мог понять за что взяться, чтобы дело приносило
+          удовольствие и
+          деньги, пока не наткнулся на один интересный курс.
+        </p>
+        <p class="section__text">
+          С тех пор прошел огонь, воду и медные трубы. Учёба давалась по-разному: где-то легче, где-то сложнее.
+          Каждодневная
+          работа над навыками и усердие, с которым я подходил к обучению, уже через несколько месяцев принесли плоды - я
+          взял
+          первый заказ на фрилансе. С отзывами клиентов и примерами работ можно ознакомиться ниже.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section__grey" id="skills">
+    <div class="container">
+
+      <h2 class="section__title">
+        Навыки
+      </h2>
+      <div class="section__skills-inner">
+        <img class="photo" src="images/photo.jpg" alt="Фотография Ивана Иванова">
+        <div class="diagramm__wrap">
+          <div class="diagramm diagramm__html"></div>
+          <div class="diagramm diagramm__css"></div>
+          <div class="diagramm diagramm__js"></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="js/main.js"></script>
