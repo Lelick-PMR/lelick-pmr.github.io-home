@@ -125,7 +125,7 @@ body {
   margin-right: 35px;
 }
 
-.menu__list-item:last-child { /* Пока это запомнилось. это ведь не ошибка? */
+.menu__list-item:last-child { 
   margin-right: 0px;
 }
 
@@ -162,21 +162,21 @@ body {
   display: flex;
   position: relative;
   flex-direction: column;
+  align-items: flex-start;
   justify-content: space-between;
-  height: 100%;
-  white-space: normal;
   height: calc(100vh - 478px);
 }
 
 .header__text {
+  display: inline-block;
   color: #fff;
   font-size: 48px;
   line-height: 62.4px;
   max-width: 600px;
+  left: 0;
 }
 
 .header__profession {
-  display: block;
   font-size: 90px;
   font-weight: 700;
   line-height: 117px;
@@ -185,11 +185,9 @@ body {
 .header__link {
   display: flex;
   position: relative;
+  align-self: center;
   justify-content: center;
   height: 56px;
-  left: 50%;
-  transform: translate(-50%, 0);
-  bottom: 0;
 }
 
 .header__link::after {
@@ -275,13 +273,12 @@ body {
   font-weight: bold;
   width: 100%;
   height: 32px;
-  border: 1px solid #000;
 }
 
 .diagramm__lable {
   display: flex;
   align-items: center;
-  width: 80px;
+  width: 64px;
   height: 32px;
   text-transform: uppercase;
 }
@@ -300,57 +297,29 @@ body {
 .section__services-inner {
   display: flex;
   position: relative;
-  
+  justify-content: space-between;
 }
 
 .service {
-  width: 100%;
-  
-}
-
-/* 
-.diagramm::before {
-  content: '';
   display: flex;
-  position: absolute;
-  height: 32px;
-  align-items: center;
-  left: -60px;
+  flex-direction: column;
+  width: 330px;
 }
 
-.diagramm__html::before {
-  content: 'HTML';
+.service__icon {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 30px;
 }
 
-.diagramm__css::before {
-  content: 'CSS';
+.service__title {
+  font-size: 28px;
+  line-height: 36.4px;
+  font-weight: 600;
+  margin-bottom: 25px;
 }
 
-.diagramm__js::before {
-  content: 'JS';
+.service__text {
+  font-size: 16px;
+  line-height: 25.6px;
 }
-
-.diagramm::after {
-  content: '';
-  display: flex;
-  position: absolute;
-  height: 32px;
-  align-items: center;
-  background-color: #2352de;
-}
-
-.diagramm__html::after {
-  content: '';
-  width: 77%;
-}
-
-.diagramm__css::after {
-  content: '';
-  width: 72%;
-}
-
-.diagramm__js::after {
-  content: '';
-  width: 55%;
-}
-*/
