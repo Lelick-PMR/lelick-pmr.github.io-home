@@ -211,6 +211,11 @@ body {
   opacity: 0.5;
 }
 
+.logo__img {
+  width: 1 59px;
+  height: 53px;
+}
+
 .menu {
   display: flex;
 }
@@ -219,25 +224,25 @@ body {
   margin-right: 35px;
 }
 
-.menu__link, .header__link{
+.link {
   text-decoration: underline;
   text-decoration-color: transparent;
-  transition: color 400ms, text-decoration-color 400ms, box-shadow 400ms; 
+  transition: color 400ms, text-decoration-color 400ms, box-shadow 400ms, opacity 400ms;   
 }
 
-.menu__link:focus, .header__link:focus {
+.link:focus {
   outline: transparent;
   border-radius: 3px;
   box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
 }
 
-.menu__link:hover, .header__link:hover {
-  text-decoration-color: #fff;
+.link:hover {
+  text-decoration-color: inherit;
 }
 
-.menu__link:active, .header__link:active {
-  color: rgba(255, 255, 255, 0.7);
-  text-decoration-color: rgba(255, 255, 255, 0.7);;
+.link:active {
+  text-decoration-color: transparent;
+  opacity: 0.7;
 }
 
 .header__content {
@@ -281,10 +286,6 @@ body {
   transition: opacity 400ms;
 }
 
-.header__link:active::after {
-  opacity: 0.7;
-}
-
 .title {
   display: inline-flex;
   position: relative;
@@ -293,10 +294,6 @@ body {
   font-weight: 700;
   margin-bottom: 60px;
   z-index: 1;
-}
-
-.title--margin {
-  margin-bottom: 56px;
 }
 
 .title::before {
@@ -342,6 +339,7 @@ body {
 
 .diagramm__item:not(:last-child) {
   margin-bottom: 86px;
+
 }
 
 .diagramm__item {
@@ -442,25 +440,16 @@ body {
   font-weight: 600;
   font-size: 24px;
   line-height: 38px;
-  text-decoration: underline;
-  text-decoration-color: transparent;
-  transition: color 400ms, box-shadow 400ms, text-decoration-color 400ms;
 }
 
 .filter__btn:focus {
-  outline: transparent;
   box-shadow: 0 0 0 2px rgba(35, 82, 222, 0.5);
-  border-radius: 3px;
 }
 
-.filter__btn:hover {
-  text-decoration-color: #2352de;
+.filter__btn:hover,
+.filter__btn:active,
+.mixitup-control-active {
   color: #2352de;
-}
-
-.mixitup-control-active, .filter__btn:active {
-  color: #2352de;
-  text-decoration-color: transparent;
 }
 
 .portfolio__inner {
@@ -474,7 +463,7 @@ body {
   margin: 22px;
 }
 
-.portfolio__item img{
+.portfolio__img {
   width: 100%;
   max-width: 360px;
 }
@@ -488,7 +477,6 @@ body {
   border: 1px solid #2352de;
   color: #fff;
   transition: color 400ms, box-shadow 400ms, background-color 400ms;
-  cursor: pointer;
 }
 
 .btn:focus {
@@ -528,14 +516,16 @@ body {
   max-width: 400px;
 }
 
-.reviews__author-photo {
+.reviews__photo {
   margin: 0 auto 20px;
+  width: 100%;
+  height: 100%;
   max-width: 130px;
   max-height: 130px;
   border-radius: 50%;
 }
 
-.reviews__author-name {
+.reviews__name {
   display: block;
   font-weight: 600;
   font-style: normal;
@@ -588,8 +578,8 @@ body {
   justify-content: center;
 }
 
-.slick-dots li + li {
-  margin-left: 20px;
+.slick-dots li:not(:last-child) {
+  margin-right: 20px;
 }
 
 .slick-dots button {
@@ -600,7 +590,6 @@ body {
   border-radius: 50%;
   border: 2px solid transparent;
   background-color: #2352de;
-  cursor: pointer;
   transition: background-color 400ms, border 400ms;
 }
 
@@ -621,6 +610,8 @@ body {
   text-align: center;
   background-color: #f6f6f8;
   border: 1px solid #dbdbed;
+  opacity: 0;
+  transition: opacity 400ms;
 }
 
 .statistics__item::before {
@@ -632,6 +623,10 @@ body {
   background-position: center;
   top: 50px;
   left: 0;
+}
+
+.statistics__item--visible {
+  opacity: 1;
 }
 
 .statistics__item--icon-works::before {
@@ -671,60 +666,6 @@ body {
   justify-content: space-between;
 }
 
-.form {
-  max-width: 540px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
-.form__lable {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 18px;
-}
-
-.form__input, .form__textarea {
-  border: none;
-  background-color: #f6f6f8;
-  font-size: 14px;
-  line-height: 18px;
-  color: #9c9cab;
-  margin: 10px 0 30px auto;
-  padding: 13px 15px;
-  transition: box-shadow 400ms; 
-}
-
-.form__input::placeholder, .form__textarea::placeholder {
-  font-size: 14px;
-  line-height: 18px;
-  color: #9c9cab;
-  transition: color 400ms;
-}
-
-.form__input:focus, .form__textarea:focus {
-  outline: transparent;
-  box-shadow: 0 0 0 3px rgba(35, 82, 222, 0.5);
-}
-
-.form__input:hover::placeholder, .form__textarea:hover::placeholder {
-  color: #000;
-} 
-
-.form__input {
-  width: 255px;
-  height: 44px;
-}
-
-.form__textarea {
-  max-width: 540px;
-  min-width: 540px;
-  min-height: 115px;
-}
-
 .contacts__info {
   width: 100%;
   font-size: 16px;
@@ -747,25 +688,11 @@ body {
 .contacts__link {
   font-size: 16px;
   line-height: 21px;
-  text-decoration: underline;
-  text-decoration-color: transparent;
   color: #2352de;
-  transition: color 400ms, box-shadow 400ms, text-decoration-color 400ms;
 }
 
 .contacts__link:focus {
-  outline: transparent;
   box-shadow: 0 0 0 2px rgba(35, 82, 222, 0.5);
-  border-radius: 3px;
-}
-
-.contacts__link:hover {
-  text-decoration-color: #2352de;
-}
-
-.contacts__link:active {
-  color: rgba(35, 82, 222, 0.7);
-  text-decoration-color: transparent;
 }
 
 .social {
@@ -805,6 +732,62 @@ body {
 
 .social__link--telegram:active {
 box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.15);
+}
+
+.form {
+  max-width: 540px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.form__label {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.form__field {
+  border: none;
+  background-color: #f6f6f8;
+  font-size: 14px;
+  line-height: 18px;
+  color: #9c9cab;
+  margin: 10px 0 30px auto;
+  padding: 13px 15px;
+  transition: box-shadow 400ms; 
+}
+
+.form__field::placeholder {
+  font-size: 14px;
+  line-height: 18px;
+  color: #9c9cab;
+  transition: color 400ms;
+}
+
+.form__field:focus {
+  outline: transparent;
+  box-shadow: 0 0 0 3px rgba(35, 82, 222, 0.5);
+}
+
+.form__field:hover::placeholder {
+  color: #000;
+} 
+
+.form__input {
+  width: 255px;
+  height: 44px;
+}
+
+.form__field--textarea {
+  resize: vertical;
+  width: 540px;
+  height: 115px;
+  max-height: 250px;
+  min-height: 115px;
 }
 
 .footer {
