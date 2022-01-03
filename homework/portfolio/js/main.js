@@ -1,9 +1,36 @@
 //Консоль для проверки чего либо
 // console.log('statusStat = ' + statusStat);
 $(function () {
-  var statusBurger = 0;
 
-  //Бургер меню
+  //Пробую бургер меню
+  //Чтобы не плодить много одинаковых строк
+  //сделал отдельную функцию
+  //по которой будем проверять состояние меню,
+  //открывать и закрывать меню.
+  var statusBurger = 0; //Переменная для контроля состояния меню.
+  function burgerMenu(stBur) {
+    var $menu = $('.menu'),
+        $burger = $('.burger');
+    if (statusBurger == 0) {
+      $menu.css({ 'top': 0 });
+      $burger.addClass('burger--active');
+      statusBurger = stBur;
+    } else if (statusBurger == 1) {
+      $menu.css({ 'top': '-150%' });
+      $burger.removeClass('burger--active');
+      statusBurger = stBur;
+    }
+  }
+
+  $(document).on("click", ".burger", function (e) {
+    e.preventDefault();
+    if (statusBurger == 0) {        //Если меню закрыто, то нужно открыть его,
+      burgerMenu(1);                //Вызываем функцию, передав в нее параметр "1"
+    } else if (statusBurger == 1) { //Но если меню открыто, то закроем его
+      burgerMenu(0);                //Вызываем функцию, передав в нее параметр "0"
+    }
+  });
+ /* //Бургер меню
     var  $menu = $('.menu');
   $(document).on("click", ".burger", function (e) {
     e.preventDefault();
@@ -18,7 +45,7 @@ $(function () {
             statusBurger = 0;
     }
     //    console.log('statusBurger = ' + statusBurger);
-  });
+  });*/
 
 
 /*  $statusBurger.on("change", function () {
@@ -45,15 +72,13 @@ $(function () {
 
   //Плавная прокрутка страницы
   //Пример нашел на просторах интернета
-  $(document).on("click", ".menu__link", function (e) {
+  $(document).on("click", ".menu__link, .header__link", function (e) {
     e.preventDefault();
     var id = $(this).attr('href');
     var top = $(id).offset().top; // получаем координаты блока
     $('body, html').animate({ scrollTop: top }, 800); // плавно переходим к блоку
-    if (statusBurger == 1) {
-      $('.menu').css({ 'top': '-150%' });
-      $('.burger').removeClass('burger--active');
-      statusBurger = 0;
+    if (statusBurger == 1) {        //Если бургер меню вдруг открыто, то закроем его
+      burgerMenu(0);                //Вызываем функцию, передав в нее параметр "0"
     }
   });
   //Плавная прокрутка страницы наверх через класс to-top
