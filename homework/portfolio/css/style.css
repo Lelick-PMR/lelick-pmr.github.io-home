@@ -850,10 +850,11 @@ box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.15);
   padding: 50px 0;
 }
 
-@media (max-width: 1100px) {
+@media (orientation: portrait), (max-width: 900px) {
 
   body {
-    overflow-x: hidden;
+    font-size: 16px;
+    line-height: 26px;
   }
 
   .logo  {
@@ -866,6 +867,22 @@ box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.15);
 
   .header {
     padding-top: 15px;
+  }
+
+  .header__text {
+    font-size: 28px;
+    line-height: 36px;
+    width: 100%;
+  }
+
+  .header__profession {
+    font-size: 40px;
+    line-height: 52px;
+  }
+
+  .header__link {
+    font-size: 14px;
+    line-height: 19px;
   }
 
   .menu {
@@ -927,5 +944,21 @@ box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.15);
 
   .services__list {
     flex-direction: column;
+  }
+
+  .filter {
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 37px;
+  }
+
+  .filter__item:not(:last-child) {
+    margin-right: 0px;
+  }
+
+  .filter__btn {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 38px;
   }
 }
