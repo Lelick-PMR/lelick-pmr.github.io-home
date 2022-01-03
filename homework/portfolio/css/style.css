@@ -154,6 +154,27 @@ body {
   background-color: rgba(0, 0, 0, 0.45);
 }
 
+.state-effect {
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  transition: color 400ms, text-decoration-color 400ms, box-shadow 400ms, opacity 400ms;   
+}
+
+.state-effect:focus {
+  outline: transparent;
+  border-radius: 3px;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
+}
+
+.state-effect:hover {
+  text-decoration-color: inherit;
+}
+
+.state-effect:active {
+  text-decoration-color: transparent;
+  opacity: 0.7;
+}
+
 .container {
   max-width: 1200px;
   padding: 0 15px;
@@ -212,8 +233,7 @@ body {
 }
 
 .logo__img {
-  width: 1 59px;
-  height: 53px;
+  width: 159px;
 }
 
 .menu {
@@ -224,25 +244,55 @@ body {
   margin-right: 35px;
 }
 
-.link {
-  text-decoration: underline;
-  text-decoration-color: transparent;
-  transition: color 400ms, text-decoration-color 400ms, box-shadow 400ms, opacity 400ms;   
+.burger {
+  display: none;
+  position: relative;
+  flex-direction: column;
+  justify-content: center;
+  width: 30px;
+  height: 22px;
+  cursor: pointer;
 }
 
-.link:focus {
-  outline: transparent;
-  border-radius: 3px;
-  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
+.burger::before, 
+.burger::after {
+  content: '';
+  position: absolute;
+  display: block;
+  height: 2px;
+  width: 100%;
+  background-color: #fff;  
+  transition: transform 400ms, top 400ms, bottom 400ms;
 }
 
-.link:hover {
-  text-decoration-color: inherit;
+.burger::before {
+  top: 0;
 }
 
-.link:active {
-  text-decoration-color: transparent;
-  opacity: 0.7;
+.burger::after {
+  bottom: 0;
+}
+
+.burger--active::before {
+  top: 45%;
+  transform: rotate(-45deg);
+}
+
+.burger--active::after {
+  bottom: 45%;
+  transform: rotate(45deg);
+}
+
+.burger--active .burger__line {
+  opacity: 0;
+}
+
+.burger__line {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background-color: #fff;
+  transition: opacity 400ms;
 }
 
 .header__content {
@@ -381,6 +431,7 @@ body {
 }
 
 .services__item {
+  position: relative;
   width: 100%;
   max-width: 330px;
   padding-top: 90px;
@@ -735,6 +786,7 @@ box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.15);
 }
 
 .form {
+  width: 100%;  
   max-width: 540px;
   display: flex;
   flex-wrap: wrap;
@@ -750,6 +802,10 @@ box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.15);
   line-height: 18px;
 }
 
+.form__label--width {
+  width: 100%;
+}
+
 .form__field {
   border: none;
   background-color: #f6f6f8;
@@ -759,6 +815,7 @@ box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.15);
   margin: 10px 0 30px auto;
   padding: 13px 15px;
   transition: box-shadow 400ms; 
+  width: 255px;
 }
 
 .form__field::placeholder {
@@ -777,14 +834,9 @@ box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.15);
   color: #000;
 } 
 
-.form__input {
-  width: 255px;
-  height: 44px;
-}
-
 .form__field--textarea {
   resize: vertical;
-  width: 540px;
+  width: 100%;
   height: 115px;
   max-height: 250px;
   min-height: 115px;
@@ -794,6 +846,86 @@ box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.15);
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 153px;
   background-color: #343740;
+  padding: 50px 0;
+}
+
+@media (max-width: 900px) {
+
+  body {
+    overflow-x: hidden;
+  }
+
+  .logo  {
+    z-index: 10;
+  }
+
+  .logo__img {
+    width: 110px;
+  }
+
+  .header {
+    padding-top: 15px;
+  }
+
+  .menu {
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    align-items: center;
+    background-color: #7792e0;
+    width: 100%;
+    height: 100vh;
+    top: -150%;
+    left: 0;
+    padding: 70px 0 0 0;
+    z-index: 1;
+    transition: top 400ms;
+  }
+
+  .menu__item:not(:last-child) {
+    margin-right: 0;
+  }
+
+  .burger {
+    display: flex;
+    z-index: 10;
+  }
+
+  .menu__item {
+    width: 100%;
+    text-align: center;
+  }
+
+  .menu__link {
+    display: block;
+    padding: 11px 0;
+    width: 100%;
+    text-decoration: none;
+    transition: background-color 400ms;
+  }
+
+  .menu__link:focus {
+    outline: transparent;
+    box-shadow: none;
+    background-color: rgba(35, 82, 222, 0.1);
+  }
+
+  .menu__link:hover {
+    background-color: rgba(35, 82, 222, 0.1);
+  }
+
+  .menu__link:active {
+    opacity: 1;
+    background-color: rgba(35, 82, 222, 0.7);
+  }
+
+  .skills__inner {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .services__list {
+    flex-direction: column;
+  }
 }
