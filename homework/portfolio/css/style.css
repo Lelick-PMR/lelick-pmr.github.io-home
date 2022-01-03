@@ -364,6 +364,10 @@ body {
   background-color: #ffffff;
 }
 
+.about__text {
+  text-align: start;
+}
+
 .about__text p:not(:last-child) {
   margin-bottom: 24px;
 }
@@ -398,7 +402,6 @@ body {
   line-height: 18px;
   font-weight: bold;
   width: 100%;
-  height: 32px;
 }
 
 .diagramm__label {
@@ -517,6 +520,7 @@ body {
 .portfolio__img {
   width: 100%;
   max-width: 360px;
+  min-width: 165px;
 }
 
 .btn {
@@ -551,8 +555,13 @@ body {
   background-color: #f6f6f8;
 }
 
+.reviews__item {
+  position: relative;
+}
+
 .reviews__slide {
   display: flex;
+  position: relative;
   justify-content: space-between;
   align-items: center;
   padding: 3px 50px 0;
@@ -866,7 +875,11 @@ box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.15);
   }
 
   .header {
-    padding-top: 15px;
+    padding: 15px 0;
+  }
+
+  .header__content {
+    height: calc(100vh - 67px);
   }
 
   .header__text {
@@ -937,13 +950,98 @@ box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.15);
     background-color: rgba(35, 82, 222, 0.7);
   }
 
+  .container {
+    text-align: center;
+  }
+
+  .container--portfolio {
+    padding: 0 7px;
+  }
+
+  .about__text p:not(:last-child) {
+    margin-bottom: 15px;
+  }
+
+  .portfolio__item {
+    flex: 1 1 165px;
+    margin: 7px;
+  }
+
+  .padding {
+    padding: 50px 0;
+  }
+
+  .title {
+    font-size: 28px;
+    line-height: 36px;
+    margin-bottom: 30px;
+  }
+
+  .title::before {
+    height: 10px;
+  }
+
   .skills__inner {
     flex-wrap: wrap;
     justify-content: center;
+    padding: 0 22px;
+  }
+
+  .skills__photo {
+    width: 100%;
+    max-width: 415px;
+    margin: 0 auto 30px;
+}
+
+  .diagramm__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    font-size: 18px;
+    line-height: 18px;
+    font-weight: 600;
+    width: 100%;
+  }
+
+  .diagramm__item:not(:last-child) {
+    margin-bottom: 24px;
+  }
+
+  .diagramm__label {
+    display: inline-flexbox;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    padding-bottom: 5px;
+  }
+
+  .diagramm__bg {
+    height: 32px;
   }
 
   .services__list {
     flex-direction: column;
+  }
+
+  .services__item {
+    padding-top: 50px;
+    max-width: 100%;
+    text-align: start;
+    margin-bottom: 30px;
+  } 
+
+  .services__title {
+    font-size: 20px;
+    line-height: 26px;
+    margin-bottom: 15px;
+  }
+  
+  .services__item--icon-cms::before,
+  .services__item--icon-markup::before,
+  .services__item--icon-support::before {
+    height: 40px;
+    width: 40px;
   }
 
   .filter {
@@ -960,5 +1058,19 @@ box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.15);
     font-weight: 600;
     font-size: 24px;
     line-height: 38px;
+  }
+
+  .video {
+    position: absolute;
+    height: 600px;
+    width: 600px;
+    border-radius: 50%;
+    transform: scale(0.1);
+    top: 0;
+    left: 0;
+  }
+
+    .video::before {
+    border-radius: 50%;
   }
 }
