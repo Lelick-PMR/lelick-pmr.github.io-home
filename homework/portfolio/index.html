@@ -26,37 +26,39 @@
 
           <ul class="menu">
             <li class="menu__item">
-              <a class="link menu__link" href="#about">
+              <a class="state-effect menu__link" href="#about">
                 Обо мне
               </a>
             </li>
             <li class="menu__item">
-              <a class="link menu__link" href="#skills">
+              <a class="state-effect menu__link" href="#skills">
                 Навыки
               </a>
             </li>
             <li class="menu__item">
-              <a class="link menu__link" href="#services">
+              <a class="state-effect menu__link" href="#services">
                 Услуги
               </a>
             </li>
             <li class="menu__item">
-              <a class="link menu__link" href="#portfolio">
+              <a class="state-effect menu__link" href="#portfolio">
                 Портфолио
               </a>
             </li>
             <li class="menu__item">
-              <a class="link menu__link" href="#reviews">
+              <a class="state-effect menu__link" href="#reviews">
                 Отзывы
               </a>
             </li>
             <li class="menu__item">
-              <a class="link menu__link" href="#contacts">
+              <a class="state-effect menu__link" href="#contacts">
                 Контакты
               </a>
             </li>
           </ul>
-
+          <div class="burger">
+            <span class="burger__line"></span>
+          </div>
         </nav>
       </div>
 
@@ -72,7 +74,7 @@
           </span>
         </h1>
 
-        <a class="link header__link" href="#portfolio">смотреть работы</a>
+        <a class="state-effect header__link" href="#portfolio">смотреть работы</a>
 
       </div>
     </div>
@@ -198,22 +200,22 @@
 
         <ul class="filter">
           <li class="filter__item">
-            <button class="link filter__btn" data-filter="all" type="button">
+            <button class="state-effect filter__btn" data-filter="all" type="button">
               Все работы
             </button>
           </li>
           <li class="filter__item">
-            <button class="link filter__btn" data-filter=".category-landing" type="button">
+            <button class="state-effect filter__btn" data-filter=".category-landing" type="button">
               Лендинги
             </button>
           </li>
           <li class="filter__item">
-            <button class="link filter__btn" data-filter=".category-corporative" type="button">
+            <button class="state-effect filter__btn" data-filter=".category-corporative" type="button">
               Корпоративные
             </button>
           </li>
           <li class="filter__item">
-            <button class="link filter__btn" data-filter=".category-ecommerce" type="button">
+            <button class="state-effect filter__btn" data-filter=".category-ecommerce" type="button">
               E-commerce
             </button>
           </li>
@@ -395,12 +397,12 @@
 
             <ul class="contacts__list">
               <li class="contacts__item">
-                <a class="link contacts__link" href="tel:+380501111111">
+                <a class="state-effect contacts__link" href="tel:+380501111111">
                   +38 (050) 111 11 11
                 </a>
               </li>
               <li class="contacts__item">
-                <a class="link contacts__link" href="mailto:+380501111111">
+                <a class="state-effect contacts__link" href="mailto:+380501111111">
                   frontend-monster@email.com
                 </a>
               </li>
@@ -428,7 +430,7 @@
             </ul>
 
           </address>
-          <!-- Возможно, форму нужно переделать, обернуть ее в дивы, чтоб все красиво спозиционировать и для адаптивности -->
+
           <form class="form" action="mailto:frontend-monster@email.com" enctype="text/plain">
             <label class="form__label">Ваше имя
               <input class="form__field" type="text" placeholder="Введите ваше имя" name="name" required>
@@ -436,7 +438,7 @@
             <label class="form__label">Номер телефона
               <input class="form__field" type="tel" placeholder="+380501111111" name="phone" required>
             </label>
-            <label class="form__label">Ваше сообщение
+            <label class="form__label form__label--width">Ваше сообщение
               <textarea class="form__field form__field--textarea" placeholder="Текст вашего сообщения" name="message" required></textarea>
             </label>
             <button class="btn" type="submit">Отправить</button>
@@ -452,8 +454,8 @@
       <img class="logo__img" src="images/logo.svg" alt="Логотип FrontEnd-разработчика">
     </a>
   </footer>
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <!-- JQuery Ver. 3.6.0 -->
+  <script src="js/jquery.min.js"></script>
   <script src="js/jquery.fancybox.min.js"></script>
   <script src="js/mixitup.min.js"></script>
   <script src="js/slick.min.js"></script>
