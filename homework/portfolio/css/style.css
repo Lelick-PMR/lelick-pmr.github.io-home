@@ -37,6 +37,48 @@
   font-weight: 400;
   font-style: normal;
 }
+/*
+  ПЕРЕМЕННЫЕ.
+  Конечно можно сделать некоторые переменные локальными.
+  В общем, только узнал, что в CSS есть переменные,
+  а переменные - это большие возможности. Правда
+  не знаю, как это влияет на производительность
+  но не думаю что на столько чтобы от них отказаться.
+  А самое главное это все работает!
+*/
+
+/*
+  Глобальные переменные. 
+  Значения некоторых глобальных переменных,
+  перебьем значениями локальных переменных
+  в брейкпоинтах. 
+*/ 
+:root {
+  /* Брейкпоинты */
+  --1200px: 1200px; /* Как оказалось переменные в медиазапросах не работают, а в критерии R-7 говорится, что значения брейкпоинтов должны быть вынесены в переменные и еще пример показан. Ну совсем странно.*/
+
+  /* Размеры которые потом будем менять и вычислять для адаптива */
+  --header-p-top: 75px;     /* Поле вверху хедера */
+  --header-p-bottom: 30px;  /* Поле внизу хедера */
+  --section-p-t: 140px;     /* Поле вверху секции */
+  --logo-h: 53px;           /* Высота логотипа */
+  --logo-w: 159px;          /* Ширина логотипа */
+
+  /* Время анимации */
+  --a-time: 400ms;
+
+  /* Основные цвета */
+  --black-t: #000000;       /* Черный - для текста, используется в форме*/
+  --white-bg: #ffffff;      /* Белый - для фона */
+  --white-t: #ffffff;       /* Белый - для текста */
+  --grey-lite-bg: #f6f6f8;  /* Светло-серый - для фона секций */ 
+  --grey-t: #333333;        /* Темно-серый - для основного текста */ 
+  --blue-t: #2352de;        /* Синий - фирменный, очень часто встречается. Текст */
+  --blue-bg: #2352de;       /* Синий - для декоративных элементов дизайна */
+  --black-rgba:  0, 0, 0,;    /* Черный - для rgba, непрозрачность укажем по месту*/
+  --blue-rgba-05: rgba(35, 82, 222, 0.5); /* Синий - тот же самый цвет но в rgba с непрозрачностью 50% */
+  --white-rgba-05: rgba(255, 255, 255, 0.5); /* Белый - в rgba с непрозрачностью 50% */
+}
 
 html{
   box-sizing: border-box;
@@ -77,7 +119,7 @@ a {
 }
 
 img {
-  max-width: 100%;
+  /* max-width: 100%; */
   display: block;
 }
 
@@ -106,8 +148,8 @@ body {
   line-height: 29px;
   font-style: normal;
   font-weight: normal;
-  color: #333;
-  background-color: #fff;
+  color: var(--grey-t);
+  background-color: var(--white-bg);
 }
 
 .sr-only {
@@ -139,31 +181,31 @@ body {
   height: 100%;
   top: 0;
   left: 0;
-  transition: background-color 400ms, background-size 400ms, box-shadow 400ms;
+  transition: background-color var(--a-time), background-size var(--a-time), box-shadow var(--a-time);
 }
 
 .img-hover:focus::before {
-  box-shadow: 0 0 0 3px rgba(35, 82, 222, 0.5);
+  box-shadow: 0 0 0 3px var(--blue-rgba-05);
 }
 
 .img-hover:hover::before {
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(var(--black-rgba) 0.6);
 }
 
 .img-hover:active::before {
-  background-color: rgba(0, 0, 0, 0.45);
+  background-color: rgba(var(--black-rgba) 0.45);
 }
 
 .state-effect {
   text-decoration: underline;
   text-decoration-color: transparent;
-  transition: color 400ms, text-decoration-color 400ms, box-shadow 400ms, opacity 400ms;   
+  transition: color var(--a-time), text-decoration-color var(--a-time), box-shadow var(--a-time), opacity var(--a-time);   
 }
 
 .state-effect:focus {
   outline: transparent;
   border-radius: 3px;
-  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 0 2px var(--white-rgba-05);
 }
 
 .state-effect:hover {
@@ -192,11 +234,11 @@ body {
   background-size: cover;
   background-position: center;
   min-height: 100vh;
-  padding: 75px 0 30px;
+  padding: var(--header-p-top) 0 var(--header-p-bottom);
   z-index: 0;
   font-weight: 600;
   line-height: 23px;
-  color: #fff;
+  color: var(--white-t);
 }
 
 .header::before {
@@ -204,7 +246,7 @@ body {
   position: absolute;
   width: 100%;
   height: 100vh;
-  background-color: rgba(35, 82, 222, 0.5);
+  background-color: var(--blue-rgba-05);
   top: 0;
   z-index: -1;
 }
@@ -216,12 +258,13 @@ body {
 }
 
 .logo {
-  transition: opacity 400ms, box-shadow 400ms;
+  transition: opacity var(--a-time), box-shadow var(--a-time);
+  z-index: 10;
 }
 
 .logo:focus {
   outline: transparent;
-  box-shadow: 0 0 0 3px #2352DE;
+  box-shadow: 0 0 0 3px var(--blue-bg);
 }
 
 .logo:hover {
@@ -261,8 +304,8 @@ body {
   display: block;
   height: 2px;
   width: 100%;
-  background-color: #fff;  
-  transition: transform 400ms, top 400ms, bottom 400ms;
+  background-color: var(--white-bg);  
+  transition: transform var(--a-time), top var(--a-time), bottom var(--a-time);
 }
 
 .burger::before {
@@ -291,15 +334,15 @@ body {
   display: block;
   height: 2px;
   width: 100%;
-  background-color: #fff;
-  transition: opacity 400ms;
+  background-color: var(--white-bg);
+  transition: opacity var(--a-time);
 }
 
 .header__content {
   display: flex;
   position: relative;
   flex-direction: column;
-  height: calc(100vh - 158px);
+  height: calc(100vh - var(--header-p-top) - var(--header-p-top) - var(--logo-h));
 }
 
 .header__text {
@@ -311,6 +354,7 @@ body {
 }
 
 .header__profession {
+  display: block;
   font-size: 90px;
   font-weight: 700;
   line-height: 117px;
@@ -333,7 +377,7 @@ body {
   background-image: url('../images/arrow-down.svg');
   background-repeat: no-repeat;
   background-size: contain;
-  transition: opacity 400ms;
+  transition: opacity var(--a-time);
 }
 
 .title {
@@ -342,7 +386,7 @@ body {
   font-size: 48px;
   line-height: 62px;
   font-weight: 700;
-  margin-bottom: 60px;
+  margin-bottom: 5.2%;
   z-index: 1;
 }
 
@@ -357,11 +401,11 @@ body {
 }
 
 .padding {
-  padding: 140px 0;
+  padding: var(--section-p-t) 0;
 }
 
 .about {
-  background-color: #ffffff;
+  background-color: var(--white-bg);
 }
 
 .about__text {
@@ -373,7 +417,7 @@ body {
 }
 
 .skills {
-  background-color: #f6f6f8;  
+  background-color: var(--grey-lite-bg);  
 }
 
 .skills__inner {
@@ -420,11 +464,11 @@ body {
 
 .diagramm__percent {
   height: 100%;
-  background-color: #2352de;
+  background-color: var(--blue-bg);
 }
 
 .services {
-  background-color: #fff;
+  background-color: var(--white-bg);
 }
 
 .services__list {
@@ -437,7 +481,12 @@ body {
   position: relative;
   width: 100%;
   max-width: 330px;
+  min-width: 290px;
   padding-top: 90px;
+}
+
+.services__item:not(:last-child) {
+  margin-right: 20px;
 }
 
 .services__item::before {
@@ -497,13 +546,13 @@ body {
 }
 
 .filter__btn:focus {
-  box-shadow: 0 0 0 2px rgba(35, 82, 222, 0.5);
+  box-shadow: 0 0 0 2px var(--blue-rgba-05);
 }
 
 .filter__btn:hover,
 .filter__btn:active,
 .mixitup-control-active {
-  color: #2352de;
+  color: var(--blue-t);
 }
 
 .portfolio__inner {
@@ -514,6 +563,8 @@ body {
 }
 
 .portfolio__item {
+  flex: 1 1 260px;
+  max-width: 360px;
   margin: 22px;
 }
 
@@ -528,31 +579,31 @@ body {
   font-weight: 600;
   line-height: 23px;
   padding: 12px 24px;
-  background-color: #2352de;
-  border: 1px solid #2352de;
-  color: #fff;
-  transition: color 400ms, box-shadow 400ms, background-color 400ms;
+  background-color: var(--blue-bg);
+  border: 1px solid var(--blue-bg);
+  color: var(--white-t);
+  transition: color var(--a-time), box-shadow var(--a-time), background-color var(--a-time);
 }
 
 .btn:focus {
   outline: transparent;
-  box-shadow: 0 0 0 3px rgba(35, 82, 222, 0.5);
+  box-shadow: 0 0 0 3px var(--blue-rgba-05);
 }
 
 .btn:hover {
-  background-color: #fff;
-  color: #2352de;
+  background-color: var(--white-bg);
+  color: var(--blue-t);
 }
 
 .btn:active {
-  box-shadow: inset 0 7px 4px rgba(0, 0, 0, 0.25);
-  background-color: #2352de;
-  color: #fff;
+  box-shadow: inset 0 7px 4px rgba(var(--black-rgba) 0.25);
+  background-color: var(--blue-bg);
+  color: var(--white-t);
 }
 
 .reviews {
   text-align: center;
-  background-color: #f6f6f8;
+  background-color: var(--grey-lite-bg);
 }
 
 .reviews__item {
@@ -589,7 +640,7 @@ body {
   display: block;
   font-weight: 600;
   font-style: normal;
-  color: #2352de;
+  color: var(--blue-t);
   margin-bottom: 20px;
 }
 
@@ -609,7 +660,7 @@ body {
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(var(--black-rgba) 0.3);
   background-image: url('../images/play.svg');
   background-repeat: no-repeat;
   background-size: 85px;
@@ -630,8 +681,6 @@ body {
   background-size: 51px;
 }
 
-
-
 .slick-dots {
   display: flex;
   list-style: none;
@@ -649,12 +698,12 @@ body {
   height: 20px;
   border-radius: 50%;
   border: 2px solid transparent;
-  background-color: #2352de;
-  transition: background-color 400ms, border 400ms;
+  background-color: var(--blue-bg);
+  transition: background-color var(--a-time), border var(--a-time);
 }
 
 .slick-active button {
-  border: 2px solid #2352de;
+  border: 2px solid var(--blue-bg);
   background-color: transparent;
 }
 
@@ -668,10 +717,10 @@ body {
   width: 280px;
   padding: 150px 0 50px;
   text-align: center;
-  background-color: #f6f6f8;
+  background-color: var(--grey-lite-bg);
   border: 1px solid #dbdbed;
   opacity: 0;
-  transition: opacity 400ms;
+  transition: opacity var(--a-time);
 }
 
 .statistics__item::before {
@@ -748,11 +797,11 @@ body {
 .contacts__link {
   font-size: 16px;
   line-height: 21px;
-  color: #2352de;
+  color: var(--blue-t);
 }
 
 .contacts__link:focus {
-  box-shadow: 0 0 0 2px rgba(35, 82, 222, 0.5);
+  box-shadow: 0 0 0 2px var(--blue-rgba-05);
 }
 
 .social {
@@ -767,12 +816,12 @@ body {
   display: block;
   width: 44px;
   height: 44px;
-  transition: box-shadow 400ms, opacity 400ms;
+  transition: box-shadow var(--a-time), opacity var(--a-time);
 }
 
 .social__link:focus {
   outline: transparent;
-  box-shadow: 0 0 0 2px rgba(35, 82, 222, 0.5);
+  box-shadow: 0 0 0 2px var(--blue-rgba-05);
   border-radius: 3px;
 }
 
@@ -781,17 +830,17 @@ body {
 }
 
 .social__link--instagram:active {
-  box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.15);
+  box-shadow: 3px 3px 15px rgba(var(--black-rgba) 0.15);
   border-radius: 13px;
 }
 
 .social__link--facebook:active {
-  box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.15);
+  box-shadow: 3px 3px 15px rgba(var(--black-rgba) 0.15);
   border-radius: 6px;
 }
 
 .social__link--telegram:active {
-box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.15);
+box-shadow: 3px 3px 15px rgba(var(--black-rgba) 0.15);
 }
 
 .form {
@@ -817,13 +866,13 @@ box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.15);
 
 .form__field {
   border: none;
-  background-color: #f6f6f8;
+  background-color: var(--grey-lite-bg);
   font-size: 14px;
   line-height: 18px;
   color: #9c9cab;
   margin: 10px 0 30px auto;
   padding: 13px 15px;
-  transition: box-shadow 400ms; 
+  transition: box-shadow var(--a-time); 
   width: 255px;
 }
 
@@ -831,16 +880,16 @@ box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.15);
   font-size: 14px;
   line-height: 18px;
   color: #9c9cab;
-  transition: color 400ms;
+  transition: color var(--a-time);
 }
 
 .form__field:focus {
   outline: transparent;
-  box-shadow: 0 0 0 3px rgba(35, 82, 222, 0.5);
+  box-shadow: 0 0 0 3px var(--blue-rgba-05);
 }
 
 .form__field:hover::placeholder {
-  color: #000;
+  color: var(--black-t);
 } 
 
 .form__field--textarea {
@@ -859,43 +908,49 @@ box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.15);
   padding: 50px 0;
 }
 
-@media (orientation: portrait), (max-width: 900px) {
+/**************1200*************/
+@media (max-width: 1200px) {
 
-  body {
-    font-size: 16px;
+  .padding {
+    --section-p-t: 11.9%;
+  }
+
+  .skills__photo {
+    margin-right: 7.5%;
+  }
+
+  .portfolio__item {
+    margin: 1.8%;
+  }
+
+}
+
+/**************920**************/
+@media (max-width: 960px) {
+
+  .services__list {
+    flex-direction: column;
+  }
+
+  .services__item {
+    max-width: 100%;
+    text-align: start;
+    margin-bottom: 30px;
+  } 
+
+  .services__title {
+    font-size: 20px;
     line-height: 26px;
+    margin-bottom: 15px;
   }
+}
 
-  .logo  {
+/**************874**************/
+@media (max-width: 874px) {
+
+  .burger {
+    display: flex;
     z-index: 10;
-  }
-
-  .logo__img {
-    width: 110px;
-  }
-
-  .header {
-    padding: 15px 0;
-  }
-
-  .header__content {
-    height: calc(100vh - 67px);
-  }
-
-  .header__text {
-    font-size: 28px;
-    line-height: 36px;
-    width: 100%;
-  }
-
-  .header__profession {
-    font-size: 40px;
-    line-height: 52px;
-  }
-
-  .header__link {
-    font-size: 14px;
-    line-height: 19px;
   }
 
   .menu {
@@ -904,22 +959,19 @@ box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.15);
     flex-direction: column;
     align-items: center;
     background-color: #7792e0;
+    font-size: 18px;
+    line-height: 23px;
     width: 100%;
     height: 100vh;
     top: -150%;
     left: 0;
-    padding: 70px 0 0 0;
+    padding: 158px 0 0 0;
     z-index: 1;
-    transition: top 400ms;
+    transition: top var(--a-time);
   }
 
   .menu__item:not(:last-child) {
     margin-right: 0;
-  }
-
-  .burger {
-    display: flex;
-    z-index: 10;
   }
 
   .menu__item {
@@ -932,7 +984,7 @@ box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.15);
     padding: 11px 0;
     width: 100%;
     text-decoration: none;
-    transition: background-color 400ms;
+    transition: background-color var(--a-time);
   }
 
   .menu__link:focus {
@@ -948,6 +1000,97 @@ box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.15);
   .menu__link:active {
     opacity: 1;
     background-color: rgba(35, 82, 222, 0.7);
+  }
+
+  .skills__inner {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0 22px;
+  }
+
+  .skills__photo {
+    width: 100%;
+    max-width: 415px;
+    margin: 0 auto 30px;
+  }
+
+  .diagramm {
+    max-width: 415px;
+  }
+
+  .diagramm__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    font-size: 18px;
+    line-height: 18px;
+    font-weight: 600;
+    width: 100%;
+  }
+
+  .diagramm__item:not(:last-child) {
+    margin-bottom: 24px;
+  }
+
+  .diagramm__label {
+    display: inline-flexbox;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    padding-bottom: 5px;
+  }
+
+  .diagramm__bg {
+    height: 32px;
+  }
+}
+
+/**************768**************/
+@media (max-width: 768px) {
+
+}
+
+/**************576**************/
+@media (max-width: 576px) {
+
+  .menu {
+    padding: 70px 0 0 0;
+  }
+
+  body {
+    font-size: 16px;
+    line-height: 26px;
+  }
+
+  .logo__img {
+    width: 110px;
+  }
+
+  .header {
+    --header-p-top: 15px;     /* Поле вверху хедера */
+    --header-p-bottom: 15px;  /* Поле внизу хедера */
+  }
+
+  .header__content {
+    height: calc(100vh - 67px);
+  }
+
+  .header__text {
+    font-size: 28px;
+    line-height: 36px;
+    max-width: 100%;
+    text-align: start;
+  }
+
+  .header__profession {
+    font-size: 40px;
+    line-height: 52px;
+  }
+
+  .header__link {
+    font-size: 14px;
+    line-height: 19px;
   }
 
   .container {
@@ -981,54 +1124,8 @@ box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.15);
     height: 10px;
   }
 
-  .skills__inner {
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 0 22px;
-  }
-
-  .skills__photo {
-    width: 100%;
-    max-width: 415px;
-    margin: 0 auto 30px;
-}
-
-  .diagramm__item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-    font-size: 18px;
-    line-height: 18px;
-    font-weight: 600;
-    width: 100%;
-  }
-
-  .diagramm__item:not(:last-child) {
-    margin-bottom: 24px;
-  }
-
-  .diagramm__label {
-    display: inline-flexbox;
-    width: 100%;
-    height: 100%;
-    justify-content: center;
-    padding-bottom: 5px;
-  }
-
-  .diagramm__bg {
-    height: 32px;
-  }
-
-  .services__list {
-    flex-direction: column;
-  }
-
   .services__item {
     padding-top: 50px;
-    max-width: 100%;
-    text-align: start;
-    margin-bottom: 30px;
   } 
 
   .services__title {
@@ -1062,6 +1159,11 @@ box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.15);
 
   .reviews__slide {
     padding: 0 22px;
+    justify-content: center;
+  }
+
+  .reviews__photo {
+    margin: 0 auto 30px;
   }
 
   .reviews__text {
@@ -1082,15 +1184,16 @@ box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.15);
     border-radius: 50%;
     /*transform: scale(0.1);*/
     top: 90px;
-    left: 58%;
+    left: 50%;
+    transform: translate(42%, 0);
   }
 
   .video::before {
     border-radius: 50%;
-    background-size: 20px;
+    background-size: 17px;
   }
 
   .video:hover::before {
-    background-size: 25px;
+    background-size: 20px;
   }
 }
