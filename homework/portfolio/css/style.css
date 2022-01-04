@@ -1060,17 +1060,37 @@ box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.15);
     line-height: 38px;
   }
 
-  .video {
-    position: absolute;
-    height: 600px;
-    width: 600px;
-    border-radius: 50%;
-    transform: scale(0.1);
-    top: 0;
-    left: 0;
+  .reviews__slide {
+    padding: 0 22px;
   }
 
-    .video::before {
+  .reviews__text {
+    font-size: 16px;
+    line-height: 21px;
+    max-width: 100%;
+  }
+
+  .reviews__name {
+    font-size: 20px;
+    line-height: 26px;
+  }
+
+  .video {
+    position: absolute;
+    height: 60px;
+    width: 60px;
     border-radius: 50%;
+    /*transform: scale(0.1);*/
+    top: 90px;
+    left: 58%;
+  }
+
+  .video::before {
+    border-radius: 50%;
+    background-size: 20px;
+  }
+
+  .video:hover::before {
+    background-size: 25px;
   }
 }
