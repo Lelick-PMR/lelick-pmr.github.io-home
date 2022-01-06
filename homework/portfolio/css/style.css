@@ -273,6 +273,11 @@ body {
   padding: 0;
 }
 
+.container--statistics {
+  max-width: 1215px;
+  padding: 0;
+}
+
 .header {
   position: relative;
   background-repeat: no-repeat;
@@ -385,6 +390,7 @@ body {
   display: flex;
   position: relative;
   flex-direction: column;
+  text-align: start;
   height: calc(100vh - var(--header-p-top) - var(--header-p-bottom) - var(--logo-h));
 }
 
@@ -744,13 +750,16 @@ body {
 
 .statistics {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .statistics__item {
+  flex: 1 1 280px;
   position: relative;
   width: 280px;
   padding: 150px 0 50px;
+  margin: 7.5px;
   text-align: center;
   background-color: var(--grey-lite-bg);
   border: 1px solid #dbdbed;
@@ -997,7 +1006,7 @@ box-shadow: 3px 3px 15px rgba(var(--black-rgba) 0.15);
 }
 
 /**************992 qHD**************/
-@media (max-width: 991px) {
+@media (max-width: 992px) {
 
   .services__list {
     /* flex-direction: column; */
@@ -1005,20 +1014,62 @@ box-shadow: 3px 3px 15px rgba(var(--black-rgba) 0.15);
   }
 
   .services__item {
-    flex: 1 1 ;
+    /* ШПАРГАЛКА ДЛЯ СЕБЯ Жадность элементов flex: 1 1 auto;
+    flex-grow: 1; - равномерно делим пространство, 
+    flex-shrink: 1; - равномерно сжимаем элементы 
+    flex-basis: ; - в данном случае не учавствует*/
+    flex: 1 1; 
     max-width: 100%;
     text-align: start;
     margin-bottom: 30px;
   } 
 
   .services__title {
-    font-size: 20px;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .reviews__slide {
+    padding: 0 22px;
+    justify-content: center;
+  }
+
+  .reviews__photo {
+    margin: 0 auto 30px;
+  }
+  
+  .video {
+    position: absolute;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    top: 90px;
+    left: 50%;
+    transform: translate(42%, 0);
+  }
+
+  .video::before {
+    border-radius: 50%;
+    background-size: 17px;
+  }
+
+  .video:hover::before {
+    background-size: 20px;
   }
 }
 
 /**************874**************/
 @media (max-width: 874px) {
+  /* Присвоим новые значения глобальным переменным */
+  :root {
+    --logo-h: 36px;           /* Ширина лого */
+    --logo-w: 110px;          /* Высота лого */ 
+    --header-p-top: 15px;     /* Поле вверху хедера */
+    --header-p-bottom: 15px;  /* Поле внизу хедера */
+  }
+
+  .container {
+    text-align: center;
+  }
 
   .burger {
     display: flex;
@@ -1073,16 +1124,6 @@ box-shadow: 3px 3px 15px rgba(var(--black-rgba) 0.15);
     background-color: rgba(35, 82, 222, 0.7);
   }
 
-  .logo {
-    --logo-h: 36px;
-    --logo-w: 110px;
-  }
-
-  .header {
-    --header-p-top: 15px;     /* Поле вверху хедера */
-    --header-p-bottom: 15px;  /* Поле внизу хедера */
-  }
-
   .skills__inner {
     flex-wrap: wrap;
     justify-content: center;
@@ -1124,11 +1165,32 @@ box-shadow: 3px 3px 15px rgba(var(--black-rgba) 0.15);
   .diagramm__bg {
     height: 32px;
   }
+
+  .statistics__item {
+    flex: 1 1 280px;
+    position: relative;
+    max-width: 280px;
+  }
 }
 
 /**************768**************/
 @media (max-width: 768px) {
 
+  .filter {
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 37px;
+  }
+
+  .filter__item:not(:last-child) {
+    margin-right: 0px;
+    margin-bottom: 15px;
+  }
+
+  .filter__btn {
+    width: 100%;
+    height: 44px;
+  }
 }
 
 /**************576**************/
@@ -1199,28 +1261,9 @@ box-shadow: 3px 3px 15px rgba(var(--black-rgba) 0.15);
     width: 40px;
   }
 
-  .filter {
-    flex-direction: column;
-    justify-content: center;
-    margin-bottom: 37px;
-  }
-
-  .filter__item:not(:last-child) {
-    margin-right: 0px;
-  }
-
   .filter__btn {
-    font-weight: 600;
-    font-size: 24px;
-  }
-
-  .reviews__slide {
-    padding: 0 22px;
-    justify-content: center;
-  }
-
-  .reviews__photo {
-    margin: 0 auto 30px;
+    font-size: 18px;
+    height: 30px;
   }
 
   .reviews__text {
@@ -1230,25 +1273,5 @@ box-shadow: 3px 3px 15px rgba(var(--black-rgba) 0.15);
 
   .reviews__name {
     font-size: 20px;
-  }
-
-  .video {
-    position: absolute;
-    height: 60px;
-    width: 60px;
-    border-radius: 50%;
-    /*transform: scale(0.1);*/
-    top: 90px;
-    left: 50%;
-    transform: translate(42%, 0);
-  }
-
-  .video::before {
-    border-radius: 50%;
-    background-size: 17px;
-  }
-
-  .video:hover::before {
-    background-size: 20px;
   }
 }
