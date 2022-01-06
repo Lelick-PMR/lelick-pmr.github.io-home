@@ -39,11 +39,11 @@
 }
 /*
   ПЕРЕМЕННЫЕ.
-  Конечно можно сделать некоторые переменные локальными.
+  Конечно, можно сделать некоторые переменные локальными.
   В общем, только узнал, что в CSS есть переменные,
-  а переменные - это большие возможности. Правда
+  а переменные - это, большие возможности. Правда
   не знаю, как это влияет на производительность
-  но не думаю что на столько чтобы от них отказаться.
+  но не думаю, что на столько чтобы от них отказаться.
   А самое главное это все работает!
 */
 
@@ -54,20 +54,13 @@
   в брейкпоинтах. 
 */ 
 :root {
-  /* Брейкпоинты */
-  --1200px: 1200px; /* Как оказалось переменные в медиазапросах не работают, а в критерии R-7 говорится, что значения брейкпоинтов должны быть вынесены в переменные и еще пример показан. Ну совсем странно.*/
+  /* БРЕЙКПОИНТЫ */
+  --1200px: 1200px; /* Как оказалось переменные в медиазапросах не работают, а в критерии R-7 говорится, что значения брейкпоинтов должны быть вынесены в переменные и еще пример показан. Странно.*/
 
-  /* Размеры которые потом будем менять и вычислять для адаптива */
-  --header-p-top: 75px;     /* Поле вверху хедера */
-  --header-p-bottom: 30px;  /* Поле внизу хедера */
-  --section-p-t: 140px;     /* Поле вверху секции */
-  --logo-h: 53px;           /* Высота логотипа */
-  --logo-w: 159px;          /* Ширина логотипа */
-
-  /* Время анимации */
+  /* ВРЕМЯ АНИМАЦИИ */
   --a-time: 400ms;
 
-  /* Основные цвета */
+  /* ОСНОВНЫЕ ЦВЕТА */
   --black-t: #000000;       /* Черный - для текста, используется в форме*/
   --white-bg: #ffffff;      /* Белый - для фона */
   --white-t: #ffffff;       /* Белый - для текста */
@@ -79,18 +72,57 @@
   --blue-rgba-05: rgba(35, 82, 222, 0.5); /* Синий - тот же самый цвет но в rgba с непрозрачностью 50% */
   --white-rgba-05: rgba(255, 255, 255, 0.5); /* Белый - в rgba с непрозрачностью 50% */
 
-  /* Параметры для адаптива */ 
+  /* ПАРАМЕТРЫ ДЛЯ АДАПТИВНОЙ ВЕРСТКИ */
+  /* Размеры которые потом будем менять и вычислять для адаптива */
+  --header-p-top: 75px;     /* Поле вверху хедера */
+  --header-p-bottom: 30px;  /* Поле внизу хедера */
+  --section-p-t: 140px;     /* Поле вверху секции */
+  --section-p-b: 140px;     /* Поле внизу секции */
+  --logo-h: 53px;           /* Высота логотипа */
+  --logo-w: 159px;          /* Ширина логотипа */
+
+  /* Максимальная ширина макета, ниже которой, будем адаптировать верстку*/ 
   --maket-w-max: 1200;
-  --maket-w-min: 375;
-  --maket-w-min-px: calc(var(--maket-w-min) * 1px);
+  /* Минимальная ширина макета, ниже которой, значения уже не будем менять*/
+  --maket-w-min: 375;   
 
+  /*  Часть расчетов доступна в глобальной части, т.е. тут.
+      Другая часть применяется локально, в медиазапросах,
+      используя расчеты из глобальной области.
+  */
+  /*  Попробую объяснить свою логику, и действия. Потратил 
+      один вечер на то, чтобы придумать, как, хоть часть верстки
+      подвергнуть автоматической адаптации под все экраны используя 
+      данные из макета и информацию из критериев верстки.
+
+      Например ОТСТУПЫ: в макете отступы в верхней и нижней частях секций
+                        по 140px для ширины макета 1200px, а для ширины 
+                        макета 375px, отступы должны быть 50px. В критериях
+                        (R-3) говорится: "Крупные отступы(margin) и 
+                        поля(padding) выглядят пропорционально на разных 
+                        устройствах." Поскольку устройств безграничное 
+                        количество, я решил попробовать свой метод.
+
+      И ТАК по отступам (как пример), нам нужны следующие значения:
+        140px   - максимальный отступ
+        50px    - минимальный отступ
+        1200px  - максимальная ширина макета
+        375px   - минимальная ширина макета
+        100vw   - текущая ширина экрана
+      Далее придумал следующую формулу:
+
+      'значение' = 140-((1200-375)-(100vw-375)*(140-50)/(1200-375))
+
+      Таким образом, применяя в медиазапросах эту формулу мы не выйдем
+      за пределы указанных в макете значений, и таким образом можно адаптивить все!
+      Конечно формула не идеальная, можно наверняка как то придумать покороче, 
+      но я не математик. 
+      
+      Извини за много текста! 
+  */
   --maket-w-val: calc(var(--maket-w-max) - var(--maket-w-min));
-  --maket-w-val-px: calc(var(--maket-w-val) * 1px);
-  --disp-w-val: calc(100vw - var(--maket-w-min-px));
-
-  --p1: calc(var(--maket-w-val-px) - var(--disp-w-val));
-
-
+  --disp-w-val: calc(100vw - var(--maket-w-min) * 1px);
+  --p1: calc(var(--maket-w-val) * 1px - var(--disp-w-val));
 }
 
 html{
@@ -132,7 +164,7 @@ a {
 }
 
 img {
-  /* max-width: 100%; */
+  max-width: 100%;
   display: block;
 }
 
@@ -158,7 +190,7 @@ address {
 body {
   font-family: 'Open Sans', sans-serif;
   font-size: 18px;
-  line-height: 29px;
+  line-height: 1.6;
   font-style: normal;
   font-weight: normal;
   color: var(--grey-t);
@@ -250,7 +282,7 @@ body {
   padding: var(--header-p-top) 0 var(--header-p-bottom);
   z-index: 0;
   font-weight: 600;
-  line-height: 23px;
+  line-height: 1.3;
   color: var(--white-t);
 }
 
@@ -271,6 +303,8 @@ body {
 }
 
 .logo {
+  height: var(--logo-h);
+  width: var(--logo-w);
   transition: opacity var(--a-time), box-shadow var(--a-time);
   z-index: 10;
 }
@@ -286,10 +320,6 @@ body {
 
 .logo:active {
   opacity: 0.5;
-}
-
-.logo__img {
-  width: 159px;
 }
 
 .menu {
@@ -355,14 +385,13 @@ body {
   display: flex;
   position: relative;
   flex-direction: column;
-  height: calc(100vh - var(--header-p-top) - var(--header-p-top) - var(--logo-h));
+  height: calc(100vh - var(--header-p-top) - var(--header-p-bottom) - var(--logo-h));
 }
 
 .header__text {
   font-size: 48px;
   font-weight: 400;
   margin: auto 0;
-  line-height: 62px;
   max-width: 600px;
 }
 
@@ -370,7 +399,6 @@ body {
   display: block;
   font-size: 90px;
   font-weight: 700;
-  line-height: 117px;
 }
 
 .header__link {
@@ -397,7 +425,7 @@ body {
   display: inline-flex;
   position: relative;
   font-size: 48px;
-  line-height: 62px;
+  line-height: 1.3;
   font-weight: 700;
   margin-bottom: 60px;
   z-index: 1;
@@ -413,12 +441,12 @@ body {
   z-index: -1;
 }
 
-.padding {
+.paddings {
   padding: var(--section-p-t) 0;
 }
 
-.about {
-  background-color: var(--white-bg);
+.padding-b {
+  padding-bottom: var(--section-p-b);
 }
 
 .about__text {
@@ -456,7 +484,7 @@ body {
 .diagramm__item {
   display: flex;
   position: relative;
-  line-height: 18px;
+  line-height: 1;
   font-weight: bold;
   width: 100%;
 }
@@ -478,10 +506,6 @@ body {
 .diagramm__percent {
   height: 100%;
   background-color: var(--blue-bg);
-}
-
-.services {
-  background-color: var(--white-bg);
 }
 
 .services__list {
@@ -527,19 +551,17 @@ body {
 
 .services__title {
   font-size: 28px;
-  line-height: 36px;
+  line-height: 1.3;
   font-weight: 600;
   margin-bottom: 25px;
 }
 
 .services__text {
   font-size: 16px;
-  line-height: 26px;
 }
 
 .portfolio {
   text-align: center;
-  padding-bottom: 140px;
 }
 
 .filter {
@@ -555,7 +577,6 @@ body {
 .filter__btn {
   font-weight: 600;
   font-size: 24px;
-  line-height: 38px;
 }
 
 .filter__btn:focus {
@@ -589,8 +610,9 @@ body {
 
 .btn {
   display: inline-flex;
+  font-size: 18px;
   font-weight: 600;
-  line-height: 23px;
+  line-height: 1.3;
   padding: 12px 24px;
   background-color: var(--blue-bg);
   border: 1px solid var(--blue-bg);
@@ -634,7 +656,7 @@ body {
 
 .reviews__text {
   font-size: 24px;
-  line-height: 31px;
+  line-height: 1.3;
   font-weight: 300;
   font-style: italic;
   max-width: 400px;
@@ -769,18 +791,14 @@ body {
 
 .statistics__name {
   display: block;
-  line-height: 23px;
+  line-height: 1.3;
   margin-bottom: 20px;
 }
 
 .statistics__count {
   font-weight: 600;
   font-size: 44px;
-  line-height: 44px;
-}
-
-.contacts {
-  padding-bottom: 140px;
+  line-height: 1;
 }
 
 .contacts__inner {
@@ -791,7 +809,6 @@ body {
 .contacts__info {
   width: 100%;
   font-size: 16px;
-  line-height: 26px;
   margin-right: 100px;
 }
 
@@ -809,7 +826,7 @@ body {
 
 .contacts__link {
   font-size: 16px;
-  line-height: 21px;
+  line-height: 1.3;
   color: var(--blue-t);
 }
 
@@ -862,6 +879,8 @@ box-shadow: 3px 3px 15px rgba(var(--black-rgba) 0.15);
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  font-size: 14px;
+  line-height: 1.3;
 }
 
 .form__label {
@@ -869,8 +888,6 @@ box-shadow: 3px 3px 15px rgba(var(--black-rgba) 0.15);
   flex-direction: column;
   justify-content: space-between;
   font-weight: 600;
-  font-size: 14px;
-  line-height: 18px;
 }
 
 .form__label--width {
@@ -880,18 +897,15 @@ box-shadow: 3px 3px 15px rgba(var(--black-rgba) 0.15);
 .form__field {
   border: none;
   background-color: var(--grey-lite-bg);
-  font-size: 14px;
-  line-height: 18px;
   color: #9c9cab;
   margin: 10px 0 30px auto;
   padding: 13px 15px;
   transition: box-shadow var(--a-time); 
   width: 255px;
+  font-weight: normal;
 }
 
 .form__field::placeholder {
-  font-size: 14px;
-  line-height: 18px;
   color: #9c9cab;
   transition: color var(--a-time);
 }
@@ -921,33 +935,43 @@ box-shadow: 3px 3px 15px rgba(var(--black-rgba) 0.15);
   padding: 50px 0;
 }
 
-/**************1200*************/
+/**************1200x600 - WXVGA*************/
 @media (max-width: 1200px) {
 
   .header__text {
+    /* Размер шрифта в header от 48px до 28px*/
     --value: calc(var(--max-val) * 1px - (var(--p1) * (var(--max-val) - var(--min-val)) / var(--maket-w-val))); 
     --max-val: 48;
     --min-val: 28;
     font-size: var(--value);
-    line-height: 130%;
   }
 
   .header__profession {
+    /* Размер шрифта в header от 90px до 40px*/
     --value: calc(var(--max-val) * 1px - (var(--p1) * (var(--max-val) - var(--min-val)) / var(--maket-w-val))); 
     --max-val: 90;
     --min-val: 40;
     font-size: var(--value);
-    line-height: 130%;
   }
 
-  .padding {
+  .paddings {
+    /* Отступы секций от 140px до 50px */
     --value: calc(var(--max-val) * 1px - (var(--p1) * (var(--max-val) - var(--min-val)) / var(--maket-w-val))); 
     --max-val: 140;
     --min-val: 50;
     --section-p-t: var(--value);
   }
 
+  .padding-b {
+    /* Нижние отступы секций от 140px до 50px */
+    --value: calc(var(--max-val) * 1px - (var(--p1) * (var(--max-val) - var(--min-val)) / var(--maket-w-val))); 
+    --max-val: 140;
+    --min-val: 50;
+    --section-p-b: var(--value);
+  }
+
   .title {
+    /* Размер шрифта в заголовках секций от 60px до 30px*/
     --value: calc(var(--max-val) * 1px - (var(--p1) * (var(--max-val) - var(--min-val)) / var(--maket-w-val))); 
     --max-val: 60;
     --min-val: 30;
@@ -955,23 +979,33 @@ box-shadow: 3px 3px 15px rgba(var(--black-rgba) 0.15);
   }
 
   .skills__photo {
-    margin-right: 7.5%;
+    /* Отступ от фотографии до диаграммы от 90px до 10px*/
+    --value: calc(var(--max-val) * 1px - (var(--p1) * (var(--max-val) - var(--min-val)) / var(--maket-w-val))); 
+    --max-val: 90;
+    --min-val: 10;
+    margin-right: var(--value);
   }
 
   .portfolio__item {
-    margin: 1.8%;
+    /* Отступ между элементами в портфолио от 22px до 7px*/
+    --value: calc(var(--max-val) * 1px - (var(--p1) * (var(--max-val) - var(--min-val)) / var(--maket-w-val))); 
+    --max-val: 22.5;
+    --min-val: 7.5;
+    margin: var(--value);
   }
 
 }
 
-/**************920**************/
-@media (max-width: 960px) {
+/**************992 qHD**************/
+@media (max-width: 991px) {
 
   .services__list {
-    flex-direction: column;
+    /* flex-direction: column; */
+    flex-wrap: wrap;
   }
 
   .services__item {
+    flex: 1 1 ;
     max-width: 100%;
     text-align: start;
     margin-bottom: 30px;
@@ -979,7 +1013,6 @@ box-shadow: 3px 3px 15px rgba(var(--black-rgba) 0.15);
 
   .services__title {
     font-size: 20px;
-    line-height: 26px;
     margin-bottom: 15px;
   }
 }
@@ -999,7 +1032,6 @@ box-shadow: 3px 3px 15px rgba(var(--black-rgba) 0.15);
     align-items: center;
     background-color: #7792e0;
     font-size: 18px;
-    line-height: 23px;
     width: 100%;
     height: 100vh;
     top: -150%;
@@ -1041,17 +1073,14 @@ box-shadow: 3px 3px 15px rgba(var(--black-rgba) 0.15);
     background-color: rgba(35, 82, 222, 0.7);
   }
 
-  .logo__img {
-    width: 110px;
+  .logo {
+    --logo-h: 36px;
+    --logo-w: 110px;
   }
 
   .header {
     --header-p-top: 15px;     /* Поле вверху хедера */
     --header-p-bottom: 15px;  /* Поле внизу хедера */
-  }
-
-  .header__content {
-    height: calc(100vh - 67px);
   }
 
   .skills__inner {
@@ -1076,7 +1105,6 @@ box-shadow: 3px 3px 15px rgba(var(--black-rgba) 0.15);
     align-items: center;
     position: relative;
     font-size: 18px;
-    line-height: 18px;
     font-weight: 600;
     width: 100%;
   }
@@ -1108,25 +1136,21 @@ box-shadow: 3px 3px 15px rgba(var(--black-rgba) 0.15);
 
   body {
     font-size: 16px;
-    line-height: 26px;
   }
 
 
   .header__text {
     font-size: 28px;
-    line-height: 36px;
     max-width: 100%;
     text-align: start;
   }
 
   .header__profession {
     font-size: 40px;
-    line-height: 52px;
   }
 
   .header__link {
     font-size: 14px;
-    line-height: 19px;
   }
 
   .container {
@@ -1152,7 +1176,6 @@ box-shadow: 3px 3px 15px rgba(var(--black-rgba) 0.15);
 
   .title {
     font-size: 28px;
-    line-height: 36px;
     margin-bottom: 30px;
   }
 
@@ -1166,7 +1189,6 @@ box-shadow: 3px 3px 15px rgba(var(--black-rgba) 0.15);
 
   .services__title {
     font-size: 20px;
-    line-height: 26px;
     margin-bottom: 15px;
   }
   
@@ -1190,7 +1212,6 @@ box-shadow: 3px 3px 15px rgba(var(--black-rgba) 0.15);
   .filter__btn {
     font-weight: 600;
     font-size: 24px;
-    line-height: 38px;
   }
 
   .reviews__slide {
@@ -1204,13 +1225,11 @@ box-shadow: 3px 3px 15px rgba(var(--black-rgba) 0.15);
 
   .reviews__text {
     font-size: 16px;
-    line-height: 21px;
     max-width: 100%;
   }
 
   .reviews__name {
     font-size: 20px;
-    line-height: 26px;
   }
 
   .video {
