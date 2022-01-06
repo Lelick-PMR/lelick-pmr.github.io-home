@@ -378,6 +378,7 @@ body {
   position: relative;
   align-self: center;
   justify-content: center;
+  padding-bottom: 33px;
 }
 
 .header__link::after {
