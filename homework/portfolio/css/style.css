@@ -38,7 +38,6 @@
   font-style: normal;
 }
 
-
 /*
   ПЕРЕМЕННЫЕ - Глобальные переменные. 
   Значения некоторых глобальных переменных,
@@ -1089,7 +1088,7 @@ body {
     text-align: center;
     overflow-x: hidden;
   }
-  
+
   .container--statistics {
     padding: 0 7px;
   }
@@ -1263,7 +1262,7 @@ body {
   }
 
   .portfolio__item {
-    flex: 1 1 165px;
+    flex: 1 1 160px;
     margin: 7px;
   }
 
@@ -1314,7 +1313,7 @@ body {
   .statistics__item {
     display: flex;
     flex-direction: column;
-    flex: 1 1 163px;
+    flex: 1 1 160px;
     max-width: 100%;
     padding: 70px 15px 22px;
     justify-content: space-between;
