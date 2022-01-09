@@ -64,8 +64,8 @@
   --black-t: #000000;       /* Черный - для текста, используется в форме*/
   --white-bg: #ffffff;      /* Белый - для фона */
   --white-t: #ffffff;       /* Белый - для текста */
-  --grey-lite-bg: #f6f6f8;  /* Светло-серый - для фона секций */ 
-  --grey-t: #333333;        /* Темно-серый - для основного текста */ 
+  --gray-lite-bg: #f6f6f8;  /* Светло-серый - для фона секций */ 
+  --gray-t: #333333;        /* Темно-серый - для основного текста */ 
   --blue-t: #2352de;        /* Синий - фирменный, очень часто встречается. Текст */
   --blue-bg: #2352de;       /* Синий - для декоративных элементов дизайна */
   --black-rgba:  0, 0, 0,;    /* Черный - для rgba, непрозрачность укажем по месту*/
@@ -193,7 +193,7 @@ body {
   line-height: 1.6;
   font-style: normal;
   font-weight: normal;
-  color: var(--grey-t);
+  color: var(--gray-t);
   background-color: var(--white-bg);
 }
 
@@ -275,7 +275,7 @@ body {
 
 .container--statistics {
   max-width: 1215px;
-  padding: 0;
+  padding: 0 7px;
 }
 
 .header {
@@ -464,7 +464,7 @@ body {
 }
 
 .skills {
-  background-color: var(--grey-lite-bg);  
+  background-color: var(--gray-lite-bg);  
 }
 
 .skills__inner {
@@ -644,7 +644,7 @@ body {
 
 .reviews {
   text-align: center;
-  background-color: var(--grey-lite-bg);
+  background-color: var(--gray-lite-bg);
 }
 
 .reviews__item {
@@ -755,13 +755,13 @@ body {
 }
 
 .statistics__item {
-  flex: 1 1 280px;
+  flex: 1 1 265px;
   position: relative;
   width: 280px;
-  padding: 150px 0 50px;
-  margin: 7.5px;
+  padding: 150px 0px 50px;
+  margin: 7px;
   text-align: center;
-  background-color: var(--grey-lite-bg);
+  background-color: var(--gray-lite-bg);
   border: 1px solid #dbdbed;
   opacity: 0;
   transition: opacity var(--a-time);
@@ -812,13 +812,18 @@ body {
 
 .contacts__inner {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
+  text-align: start;
 }
 
 .contacts__info {
+  flex: 1 1 300px;
   width: 100%;
+  max-width: 540px;
   font-size: 16px;
   margin-right: 100px;
+  margin-bottom: 32px;
 }
 
 .contacts__info p{
@@ -883,6 +888,7 @@ box-shadow: 3px 3px 15px rgba(var(--black-rgba) 0.15);
 }
 
 .form {
+  flex: 1 1 300px;
   width: 100%;  
   max-width: 540px;
   display: flex;
@@ -893,24 +899,30 @@ box-shadow: 3px 3px 15px rgba(var(--black-rgba) 0.15);
 }
 
 .form__label {
+  flex: 1 1 130px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   font-weight: 600;
+  margin-bottom: 30px;
+}
+
+.form__label:first-child {
+  margin-right: 15px;
 }
 
 .form__label--width {
-  width: 100%;
+  flex: 1 1 100%;
 }
 
 .form__field {
   border: none;
-  background-color: var(--grey-lite-bg);
+  background-color: var(--gray-lite-bg);
   color: #9c9cab;
-  margin: 10px 0 30px auto;
+  margin-top: 10px;
   padding: 13px 15px;
   transition: box-shadow var(--a-time); 
-  width: 255px;
+  width: 100%;
   font-weight: normal;
 }
 
@@ -930,10 +942,14 @@ box-shadow: 3px 3px 15px rgba(var(--black-rgba) 0.15);
 
 .form__field--textarea {
   resize: vertical;
-  width: 100%;
+  max-width: 100%;
   height: 115px;
   max-height: 250px;
   min-height: 115px;
+}
+
+.form__btn {
+  display: block;
 }
 
 .footer {
@@ -1166,16 +1182,6 @@ box-shadow: 3px 3px 15px rgba(var(--black-rgba) 0.15);
     height: 32px;
   }
 
-  .statistics__item {
-    flex: 1 1 280px;
-    position: relative;
-    max-width: 280px;
-  }
-}
-
-/**************768**************/
-@media (max-width: 768px) {
-
   .filter {
     flex-direction: column;
     justify-content: center;
@@ -1191,6 +1197,25 @@ box-shadow: 3px 3px 15px rgba(var(--black-rgba) 0.15);
     width: 100%;
     height: 44px;
   }
+
+  .statistics__item {
+    flex: 1 1 265px;
+    position: relative;
+    max-width: 280px;
+  }
+
+  .contacts__info {
+    margin-right: 20px;
+    max-width: 100%;
+  }
+
+  .form {
+    max-width: 100%;
+  }
+
+  .footer {
+    padding: 32px 0;
+  }
 }
 
 /**************576**************/
@@ -1199,7 +1224,6 @@ box-shadow: 3px 3px 15px rgba(var(--black-rgba) 0.15);
   body {
     font-size: 16px;
   }
-
 
   .header__text {
     font-size: 28px;
@@ -1246,6 +1270,7 @@ box-shadow: 3px 3px 15px rgba(var(--black-rgba) 0.15);
   }
 
   .services__item {
+    min-width: 100%;
     padding-top: 50px;
   } 
 
@@ -1273,5 +1298,46 @@ box-shadow: 3px 3px 15px rgba(var(--black-rgba) 0.15);
 
   .reviews__name {
     font-size: 20px;
+  }
+
+  .statistics__item {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 163px;
+    max-width: 100%;
+    padding: 70px 15px 22px;
+    justify-content: space-between;
+  }
+
+  .statistics__item::before {
+    content: '';
+    position: absolute;
+    height: 35px;
+    top: 25px;
+    background-size: contain;
+  }
+
+  .statistics__name {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+
+  .statistics__count {
+    font-size: 30px;
+  }
+
+  .contacts__item:last-child {
+    margin-bottom: 28px;
+  }
+
+  .form__label {
+    flex: 1 1 100%;
+    max-width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .form__label:first-child {
+    margin-right: 0;
+    max-width: 100%;
   }
 }
