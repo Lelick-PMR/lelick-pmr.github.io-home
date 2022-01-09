@@ -44,12 +44,11 @@ $(function () {
   });
 
   //Плавная прокрутка страницы
-  //Пример нашел на просторах интернета
   $(document).on("click", ".menu__link, .header__link", function (e) {
     e.preventDefault();
     var id = $(this).attr('href');
     var top = $(id).offset().top; // получаем координаты блока
-    $('body, html').animate({ scrollTop: top }, 800); // плавно переходим к блоку
+    $('body, html').animate({ scrollTop: top - 68}, 800); // плавно переходим к блоку -68 временное решение
     if (statusBurger == 1) {        //Если бургер меню вдруг открыто, то закроем его
       burgerMenu(0);                //Вызываем функцию, передав в нее параметр "0"
     }
@@ -74,9 +73,6 @@ $(function () {
   });
 
   //Счетчик цифр в блоке со статистикой
-  //естественно все смотрел в гугле
-  //потом и с диаграммой решил поиграться
-  //не думаю что по коду тут все правильно но работает
   var $win = $(window);
   var winHeight = $win.height();
   $win.resize(function () { winHeight = $win.height(); });
@@ -149,8 +145,4 @@ $(function () {
       }
     });
   });
-
-
-
-
 });
