@@ -10,7 +10,6 @@
   <link rel="stylesheet" href="css/jquery.fancybox.min.css">
   <link rel="stylesheet" href="css/slick.css">
   <link rel="stylesheet" href="css/style.css">
-  <!-- <link rel="stylesheet" href="css/style-percent.css"> -->
 </head>
 
 <body>
@@ -18,41 +17,41 @@
   <header class="header" style="background-image: url('images/header_bg.jpg');">
     <div class="header__top">
 
-      <div class="container">
-        <nav class="header__navigation">
+      <div class="container container--relative">
+        <nav class="header__navigation header__navigation--fixed">
 
-          <a class="logo" href="#">
+          <a class="logo to-top" href="#">
             <img class="logo__img" src="images/logo.svg" alt="Логотип FrontEnd-разработчика">
           </a>
 
           <ul class="menu">
             <li class="menu__item">
-              <a class="state-effect menu__link" href="#about">
+              <a class="link-style menu__link" href="#about">
                 Обо мне
               </a>
             </li>
             <li class="menu__item">
-              <a class="state-effect menu__link" href="#skills">
+              <a class="link-style menu__link" href="#skills">
                 Навыки
               </a>
             </li>
             <li class="menu__item">
-              <a class="state-effect menu__link" href="#services">
+              <a class="link-style menu__link" href="#services">
                 Услуги
               </a>
             </li>
             <li class="menu__item">
-              <a class="state-effect menu__link" href="#portfolio">
+              <a class="link-style menu__link" href="#portfolio">
                 Портфолио
               </a>
             </li>
             <li class="menu__item">
-              <a class="state-effect menu__link" href="#reviews">
+              <a class="link-style menu__link" href="#reviews">
                 Отзывы
               </a>
             </li>
             <li class="menu__item">
-              <a class="state-effect menu__link" href="#contacts">
+              <a class="link-style menu__link" href="#contacts">
                 Контакты
               </a>
             </li>
@@ -75,7 +74,7 @@
           </span>
         </h1>
 
-        <a class="state-effect header__link" href="#portfolio">смотреть работы</a>
+        <a class="link-style header__link" href="#portfolio">смотреть работы</a>
 
       </div>
     </div>
@@ -99,7 +98,8 @@
             приносило удовольствие и деньги, пока не наткнулся на один интересный курс.
           </p>
           <p>
-            С тех пор прошел огонь, воду и медные трубы. Учёба давалась по-разному: где-то легче, где-то сложнее. Каждодневная работа над навыками и усердие, с которым я подходил к обучению, уже через несколько месяцев
+            С тех пор прошел огонь, воду и медные трубы. Учёба давалась по-разному: где-то легче, где-то сложнее.
+            Каждодневная работа над навыками и усердие, с которым я подходил к обучению, уже через несколько месяцев
             принесли плоды - я взял первый заказ на фрилансе. С отзывами клиентов и примерами работ можно ознакомиться
             ниже.
           </p>
@@ -200,22 +200,22 @@
 
         <ul class="filter">
           <li class="filter__item">
-            <button class="state-effect filter__btn" data-filter="all" type="button">
+            <button class="link-style filter__btn" data-filter="all" type="button">
               Все работы
             </button>
           </li>
           <li class="filter__item">
-            <button class="state-effect filter__btn" data-filter=".category-landing" type="button">
+            <button class="link-style filter__btn" data-filter=".category-landing" type="button">
               Лендинги
             </button>
           </li>
           <li class="filter__item">
-            <button class="state-effect filter__btn" data-filter=".category-corporative" type="button">
+            <button class="link-style filter__btn" data-filter=".category-corporative" type="button">
               Корпоративные
             </button>
           </li>
           <li class="filter__item">
-            <button class="state-effect filter__btn" data-filter=".category-ecommerce" type="button">
+            <button class="link-style filter__btn" data-filter=".category-ecommerce" type="button">
               E-commerce
             </button>
           </li>
@@ -239,7 +239,8 @@
           </li>
           <li class="portfolio__item mix category-corporative">
             <a class="img-hover" data-fancybox="gallery" href="images/portfolio/4.jpg">
-              <img class="portfolio__img" src="images/portfolio/4.jpg" alt="Верстка корпоративного сайта по строитульству мостов">
+              <img class="portfolio__img" src="images/portfolio/4.jpg"
+                alt="Верстка корпоративного сайта по строитульству мостов">
             </a>
           </li>
           <li class="portfolio__item mix category-ecommerce">
@@ -271,8 +272,7 @@
           <li class="reviews__item">
             <div class="reviews__slide">
               <div class="reviews__text">
-                <img class="reviews__photo" src="images/review-author.jpg"
-                  alt="Фото автора отзыва Марка Цукерберга">
+                <img class="reviews__photo" src="images/review-author.jpg" alt="Фото автора отзыва Марка Цукерберга">
                 <blockquote>
                   <cite class="reviews__name">
                     Марк Цукерберг
@@ -281,8 +281,8 @@
                   Фантастика! Я всецело доволен работой этого специалиста. Быстро и качественно. Рекомендую!
                 </blockquote>
               </div>
-              <a class="video img-hover" style="background-image: url('images/video-bg.jpg');" 
-                data-width="640" data-height="360" href="https://www.youtube.com/watch?v=XzCTdidhUUk" data-fancybox><span
+              <a class="video img-hover" style="background-image: url('images/video-bg.jpg');" data-width="640"
+                data-height="360" href="https://www.youtube.com/watch?v=XzCTdidhUUk" data-fancybox><span
                   class="sr-only">Смотреть видео</span></a>
             </div>
           </li>
@@ -290,8 +290,7 @@
           <li class="reviews__item">
             <div class="reviews__slide">
               <div class="reviews__text">
-                <img class="reviews__photo" src="images/review-author-2.jpg"
-                  alt="Фото автора отзыва Сэма Уортингтона">
+                <img class="reviews__photo" src="images/review-author-2.jpg" alt="Фото автора отзыва Сэма Уортингтона">
                 <blockquote>
                   <cite class="reviews__name">
                     Сэм Уортингтон
@@ -299,8 +298,8 @@
                   Превосходно! Мне понравилось сотрудничать с Иваном Ивановым. Все сделал в срок и качественно.
                 </blockquote>
               </div>
-              <a class="video img-hover" style="background-image: url('images/video-bg.jpg');" 
-                data-width="1280" data-height="720" href="video/video-test.mp4" data-fancybox><span class="sr-only">Смотреть
+              <a class="video img-hover" style="background-image: url('images/video-bg-2.jpg');" data-width="1280"
+                data-height="720" href="video/video-test.mp4" data-fancybox><span class="sr-only">Смотреть
                   видео</span></a>
             </div>
           </li>
@@ -308,8 +307,7 @@
           <li class="reviews__item">
             <div class="reviews__slide">
               <div class="reviews__text">
-                <img class="reviews__photo" src="images/review-author.jpg"
-                  alt="Фото автора отзыва Марка Цукерберга">
+                <img class="reviews__photo" src="images/review-author.jpg" alt="Фото автора отзыва Марка Цукерберга">
                 <blockquote>
                   <cite class="reviews__name">
                     Марк Цукерберг
@@ -318,8 +316,8 @@
                 </blockquote>
               </div>
 
-              <a class="video img-hover" style="background-image: url('images/video-bg.jpg');" 
-                data-width="640" data-height="360" href="https://www.youtube.com/watch?v=XzCTdidhUUk" data-fancybox><span
+              <a class="video img-hover" style="background-image: url('images/video-bg.jpg');" data-width="640"
+                data-height="360" href="https://www.youtube.com/watch?v=XzCTdidhUUk" data-fancybox><span
                   class="sr-only">Смотреть видео</span></a>
 
             </div>
@@ -328,8 +326,7 @@
           <li class="reviews__item">
             <div class="reviews__slide">
               <div class="reviews__text">
-                <img class="reviews__photo" src="images/review-author-2.jpg"
-                  alt="Фото автора отзыва Сэма Уортингтона">
+                <img class="reviews__photo" src="images/review-author-2.jpg" alt="Фото автора отзыва Сэма Уортингтона">
                 <blockquote>
                   <cite class="reviews__name">
                     Сэм Уортингтон
@@ -337,7 +334,9 @@
                   Превосходно! Мне понравилось сотрудничать с Иваном Ивановым. Все сделал в срок и качественно.
                 </blockquote>
               </div>
-              <a class="video img-hover" style="background-image: url('images/video-bg.jpg');" data-width="1280" data-height="720" href="video/video-test.mp4"><span class="sr-only" data-fancybox>Смотреть видео</span></a>
+              <a class="video img-hover" style="background-image: url('images/video-bg-2.jpg');" data-width="1280"
+                data-height="720" href="video/video-test.mp4"><span class="sr-only" data-fancybox>Смотреть
+                  видео</span></a>
 
             </div>
           </li>
@@ -397,12 +396,12 @@
 
             <ul class="contacts__list">
               <li class="contacts__item">
-                <a class="state-effect contacts__link" href="tel:+380501111111">
+                <a class="link-style contacts__link" href="tel:+380501111111">
                   +38 (050) 111 11 11
                 </a>
               </li>
               <li class="contacts__item">
-                <a class="state-effect contacts__link" href="mailto:+380501111111">
+                <a class="link-style contacts__link" href="mailto:+380501111111">
                   frontend-monster@email.com
                 </a>
               </li>
@@ -439,9 +438,10 @@
               <input class="form__field" type="tel" placeholder="+380501111111" name="phone" required>
             </label>
             <label class="form__label form__label--width">Ваше сообщение
-              <textarea class="form__field form__field--textarea" placeholder="Текст вашего сообщения" name="message" required></textarea>
+              <textarea class="form__field form__field--textarea" placeholder="Текст вашего сообщения" name="message"
+                required></textarea>
             </label>
-            <button class="form__btn btn" type="submit">Отправить</button>
+            <button class="btn" type="submit">Отправить</button>
           </form>
 
         </div>
