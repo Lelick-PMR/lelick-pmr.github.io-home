@@ -37,18 +37,10 @@
   font-weight: 400;
   font-style: normal;
 }
-/*
-  ПЕРЕМЕННЫЕ.
-  Конечно, можно сделать некоторые переменные локальными.
-  В общем, только узнал, что в CSS есть переменные,
-  а переменные - это, большие возможности. Правда
-  не знаю, как это влияет на производительность
-  но не думаю, что на столько чтобы от них отказаться.
-  А самое главное это все работает!
-*/
+
 
 /*
-  Глобальные переменные. 
+  ПЕРЕМЕННЫЕ - Глобальные переменные. 
   Значения некоторых глобальных переменных,
   перебьем значениями локальных переменных
   в брейкпоинтах. 
@@ -92,7 +84,7 @@
   */
   /*  Попробую объяснить свою логику, и действия. Потратил 
       один вечер на то, чтобы придумать, как, хоть часть верстки
-      подвергнуть автоматической адаптации под все экраны используя 
+      подвергнуть автоматизированной адаптации под все экраны используя 
       данные из макета и информацию из критериев верстки.
 
       Например ОТСТУПЫ: в макете отступы в верхней и нижней частях секций
@@ -115,7 +107,7 @@
 
       Таким образом, применяя в медиазапросах эту формулу мы не выйдем
       за пределы указанных в макете значений, и таким образом можно адаптивить все!
-      Конечно формула не идеальная, можно наверняка как то придумать покороче, 
+      Конечно формула не идеальная, наверняка можно как то придумать покороче, 
       но я не математик. 
       
       Извини за много текста! 
@@ -241,23 +233,23 @@ body {
   background-color: rgba(var(--black-rgba) 0.45);
 }
 
-.state-effect {
+.link-style {
   text-decoration: underline;
   text-decoration-color: transparent;
   transition: color var(--a-time), text-decoration-color var(--a-time), box-shadow var(--a-time), opacity var(--a-time);   
 }
 
-.state-effect:focus {
+.link-style:focus {
   outline: transparent;
   border-radius: 3px;
   box-shadow: 0 0 0 2px var(--white-rgba-05);
 }
 
-.state-effect:hover {
+.link-style:hover {
   text-decoration-color: inherit;
 }
 
-.state-effect:active {
+.link-style:active {
   text-decoration-color: transparent;
   opacity: 0.7;
 }
@@ -374,7 +366,8 @@ body {
   transform: rotate(45deg);
 }
 
-.burger--active .burger__line {
+.burger--active 
+.burger__line {
   opacity: 0;
 }
 
@@ -826,7 +819,7 @@ body {
   margin-bottom: 32px;
 }
 
-.contacts__info p{
+.contacts__info p {
   margin-bottom: 30px;
 }
 
@@ -884,7 +877,7 @@ body {
 }
 
 .social__link--telegram:active {
-box-shadow: 3px 3px 15px rgba(var(--black-rgba) 0.15);
+  box-shadow: 3px 3px 15px rgba(var(--black-rgba) 0.15);
 }
 
 .form {
@@ -948,10 +941,6 @@ box-shadow: 3px 3px 15px rgba(var(--black-rgba) 0.15);
   min-height: 115px;
 }
 
-.form__btn {
-  display: block;
-}
-
 .footer {
   display: flex;
   justify-content: center;
@@ -960,7 +949,7 @@ box-shadow: 3px 3px 15px rgba(var(--black-rgba) 0.15);
   padding: 50px 0;
 }
 
-/**************1200x600 - WXVGA*************/
+/* 1200 - WXVGA******/
 @media (max-width: 1200px) {
 
   .header__text {
@@ -1021,11 +1010,16 @@ box-shadow: 3px 3px 15px rgba(var(--black-rgba) 0.15);
 
 }
 
-/**************992 qHD**************/
+/* 992 - qHD*********/
 @media (max-width: 992px) {
 
+  .menu__link {
+    display: flex;
+    align-items: center;
+    height: 44px;
+  }
+
   .services__list {
-    /* flex-direction: column; */
     flex-wrap: wrap;
   }
 
@@ -1073,7 +1067,7 @@ box-shadow: 3px 3px 15px rgba(var(--black-rgba) 0.15);
   }
 }
 
-/**************874**************/
+/* 874**************/
 @media (max-width: 874px) {
   /* Присвоим новые значения глобальным переменным */
   :root {
@@ -1085,6 +1079,7 @@ box-shadow: 3px 3px 15px rgba(var(--black-rgba) 0.15);
 
   .container {
     text-align: center;
+    overflow-x: hidden;
   }
 
   .burger {
@@ -1138,6 +1133,10 @@ box-shadow: 3px 3px 15px rgba(var(--black-rgba) 0.15);
   .menu__link:active {
     opacity: 1;
     background-color: rgba(35, 82, 222, 0.7);
+  }
+
+  .header__link::after {
+    top: 27px;
   }
 
   .skills__inner {
@@ -1199,9 +1198,9 @@ box-shadow: 3px 3px 15px rgba(var(--black-rgba) 0.15);
   }
 
   .statistics__item {
-    flex: 1 1 265px;
+    flex: 1 1 260px;
     position: relative;
-    max-width: 280px;
+    max-width: 100%;
   }
 
   .contacts__info {
@@ -1218,7 +1217,7 @@ box-shadow: 3px 3px 15px rgba(var(--black-rgba) 0.15);
   }
 }
 
-/**************576**************/
+/* 576**************/
 @media (max-width: 576px) {
 
   body {
