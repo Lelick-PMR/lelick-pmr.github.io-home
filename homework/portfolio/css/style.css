@@ -1089,6 +1089,10 @@ body {
     text-align: center;
     overflow-x: hidden;
   }
+  
+  .container--statistics {
+    padding: 0 7px;
+  }
 
   .burger {
     display: flex;
