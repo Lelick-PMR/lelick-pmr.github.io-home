@@ -16,9 +16,9 @@ $(function () {
       $burger.addClass('burger--active');
       statusBurger = stBur;
     } else if (statusBurger == 1) {
-      $menu.css({ 'top': '-150%' });
+      $menu.css({ 'top': '-300vh' });
       $burger.removeClass('burger--active');
-      statusBurger = stBur;
+      statusBurger = stBur; 
     }
   }
 
@@ -30,33 +30,6 @@ $(function () {
       burgerMenu(0);                //Вызываем функцию, передав в нее параметр "0"
     }
   });
- /* //Бургер меню
-    var  $menu = $('.menu');
-  $(document).on("click", ".burger", function (e) {
-    e.preventDefault();
-        var that = $(this);
-    if (statusBurger == 0) {
-            $menu.css({'top': 0});
-            that.addClass('burger--active');
-            statusBurger = 1;
-    } else if (statusBurger == 1) {
-            $menu.css({ 'top': '-150%' });
-            that.removeClass('burger--active');
-            statusBurger = 0;
-    }
-    //    console.log('statusBurger = ' + statusBurger);
-  });*/
-
-
-/*  $statusBurger.on("change", function () {
-     if ($statusBurger == 1) {
-    $('.menu').css({ 'top': 0 });
-    $('.burger').addClass('burger--active');
-  } else if ($statusBurger == 0) {
-    $('.menu').css({ 'top': '-150%' });
-    $('.burger').removeClass('burger--active');
-  } 
-  }); */
 
   // Галлерея портфолио
   var mixer = mixitup('.portfolio__inner');
@@ -85,6 +58,19 @@ $(function () {
   $(document).on("click", ".to-top", function (e) {
     e.preventDefault();
     $('body, html').animate({ scrollTop: 0 }, 800);
+  });
+
+  //Меню, крепим к верху при скролле
+  $(document).ready(function () {
+    var header = $('body, html').offset().top;
+
+    $(window).scroll(function () {
+      if ($(window).scrollTop() > header + 60) {
+        $('.header__top').addClass('header__top--fixed');
+      } else {
+        $('.header__top').removeClass('header__top--fixed');
+      }
+    });
   });
 
   //Счетчик цифр в блоке со статистикой
