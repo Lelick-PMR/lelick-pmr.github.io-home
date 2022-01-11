@@ -12,15 +12,15 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
+<body id="top">
 
   <header class="header" style="background-image: url('images/header_bg.jpg');">
     <div class="header__top">
 
-      <div class="container container--relative">
-        <nav class="header__navigation header__navigation--fixed">
+      <div class="container">
+        <nav class="header__navigation">
 
-          <a class="logo to-top" href="#">
+          <a class="logo" href="#top">
             <img class="logo__img" src="images/logo.svg" alt="Логотип FrontEnd-разработчика">
           </a>
 
@@ -56,9 +56,10 @@
               </a>
             </li>
           </ul>
-          <div class="burger">
+          <button class="burger" type="button">
+            <span class="sr-only">Выпадающее меню</span>
             <span class="burger__line"></span>
-          </div>
+          </button>
         </nav>
       </div>
 
@@ -277,13 +278,15 @@
                   <cite class="reviews__name">
                     Марк Цукерберг
                   </cite>
-
                   Фантастика! Я всецело доволен работой этого специалиста. Быстро и качественно. Рекомендую!
                 </blockquote>
               </div>
               <a class="video img-hover" style="background-image: url('images/video-bg.jpg');" data-width="640"
-                data-height="360" href="https://www.youtube.com/watch?v=XzCTdidhUUk" data-fancybox><span
-                  class="sr-only">Смотреть видео</span></a>
+                data-height="360" href="https://www.youtube.com/watch?v=XzCTdidhUUk" data-fancybox>
+                <span class="sr-only">
+                  Смотреть видео
+                </span>
+              </a>
             </div>
           </li>
 
@@ -299,8 +302,11 @@
                 </blockquote>
               </div>
               <a class="video img-hover" style="background-image: url('images/video-bg-2.jpg');" data-width="1280"
-                data-height="720" href="video/video-test.mp4" data-fancybox><span class="sr-only">Смотреть
-                  видео</span></a>
+                data-height="720" href="video/video-test.mp4" data-fancybox>
+                <span class="sr-only">
+                  Смотреть видео
+                </span>
+              </a>
             </div>
           </li>
 
@@ -317,8 +323,11 @@
               </div>
 
               <a class="video img-hover" style="background-image: url('images/video-bg.jpg');" data-width="640"
-                data-height="360" href="https://www.youtube.com/watch?v=XzCTdidhUUk" data-fancybox><span
-                  class="sr-only">Смотреть видео</span></a>
+                data-height="360" href="https://www.youtube.com/watch?v=XzCTdidhUUk" data-fancybox>
+                <span class="sr-only">
+                  Смотреть видео
+                </span>
+              </a>
 
             </div>
           </li>
@@ -335,8 +344,11 @@
                 </blockquote>
               </div>
               <a class="video img-hover" style="background-image: url('images/video-bg-2.jpg');" data-width="1280"
-                data-height="720" href="video/video-test.mp4"><span class="sr-only" data-fancybox>Смотреть
-                  видео</span></a>
+                data-height="720" href="video/video-test.mp4">
+                <span class="sr-only" data-fancybox>
+                  Смотреть видео
+                </span>
+              </a>
 
             </div>
           </li>
@@ -411,19 +423,25 @@
               <li class="social__item">
                 <a class="social__link social__link--instagram" style="background-image: url('images/instagram.svg');"
                   href="#" target="_blank">
-                  <span class="sr-only">instagram</span>
+                  <span class="sr-only">
+                    instagram
+                  </span>
                 </a>
               </li>
               <li class="social__item">
                 <a class="social__link social__link--facebook" style="background-image: url('images/facebook.svg');"
                   href="#" target="_blank">
-                  <span class="sr-only">facebook</span>
+                  <span class="sr-only">
+                    facebook
+                  </span>
                 </a>
               </li>
               <li class="social__item">
                 <a class="social__link social__link--telegram" style="background-image: url('images/telegram.svg');"
                   href="#" target="_blank">
-                  <span class="sr-only">telegram</span>
+                  <span class="sr-only">
+                    telegram
+                  </span>
                 </a>
               </li>
             </ul>
@@ -432,7 +450,7 @@
 
           <form class="form" action="mailto:frontend-monster@email.com" enctype="text/plain">
             <label class="form__label">Ваше имя
-              <input class="form__field" type="text" placeholder="Введите ваше имя" name="name" required>
+              <input class="form__field" type="text" placeholder="Иван" name="name" required>
             </label>
             <label class="form__label">Номер телефона
               <input class="form__field" type="tel" placeholder="+380501111111" name="phone" required>
@@ -451,7 +469,7 @@
   </main>
 
   <footer class="footer">
-    <a class="logo to-top" href="#">
+    <a class="logo" href="#top">
       <img class="logo__img" src="images/logo.svg" alt="Логотип FrontEnd-разработчика">
     </a>
   </footer>
