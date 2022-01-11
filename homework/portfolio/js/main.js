@@ -2,27 +2,30 @@
 // console.log('statusStat = ' + statusStat);
 $(function () {
 
+  var $doc = $(document);
+  var $win = $(window);
+  var statusBurger = 0; //Переменная для контроля состояния меню.
+
   //Пробую бургер меню
   //Чтобы не плодить много одинаковых строк
   //сделал отдельную функцию
   //по которой будем проверять состояние меню,
   //открывать и закрывать меню.
-  var statusBurger = 0; //Переменная для контроля состояния меню.
   function burgerMenu(stBur) {
     var $menu = $('.menu'),
-        $burger = $('.burger');
+      $burger = $('.burger');
     if (statusBurger == 0) {
       $menu.css({ 'top': 0 });
       $burger.addClass('burger--active');
       statusBurger = stBur;
     } else if (statusBurger == 1) {
-      $menu.css({ 'top': '-300vh' });
+      $menu.css({ 'top': '-200vh' });
       $burger.removeClass('burger--active');
-      statusBurger = stBur; 
+      statusBurger = stBur;
     }
   }
 
-  $(document).on("click", ".burger", function (e) {
+  $doc.on("click", ".burger", function (e) {
     e.preventDefault();
     if (statusBurger == 0) {        //Если меню закрыто, то нужно открыть его,
       burgerMenu(1);                //Вызываем функцию, передав в нее параметр "1"
@@ -44,36 +47,42 @@ $(function () {
   });
 
   //Плавная прокрутка страницы
-  $(document).on("click", ".menu__link, .header__link", function (e) {
+  $doc.on("click", ".menu__link, .header__link, .logo", function (e) {
     e.preventDefault();
     var id = $(this).attr('href');
     var top = $(id).offset().top; // получаем координаты блока
-    $('body, html').animate({ scrollTop: top - 68}, 800); // плавно переходим к блоку -68 временное решение
+    $('body, html').animate({ scrollTop: top - 63 }, 800); // плавно переходим к блоку -68 временное решение
     if (statusBurger == 1) {        //Если бургер меню вдруг открыто, то закроем его
       burgerMenu(0);                //Вызываем функцию, передав в нее параметр "0"
     }
   });
-  //Плавная прокрутка страницы наверх через класс to-top
-  $(document).on("click", ".to-top", function (e) {
-    e.preventDefault();
-    $('body, html').animate({ scrollTop: 0 }, 800);
-  });
 
   //Меню, крепим к верху при скролле
-  $(document).ready(function () {
-    var header = $('body, html').offset().top;
 
-    $(window).scroll(function () {
-      if ($(window).scrollTop() > header + 60) {
+  //Был баг - если обновить страницу в том месте 
+  //где scrollTop() не равен 0, то класс не применялся.
+  //не знаю как правильно но пока так пофиксил
+  var header = $('body, html').offset().top;
+  if ($win.scrollTop() > header) {
+    $('.header__top').addClass('header__top--fixed');
+  }
+
+  //А тут уже применяем класс при скролле
+  $doc.ready(function () {
+    if ($win.scrollTop() > header) {
+      $('.header__top').addClass('header__top--fixed');
+    }
+    $win.scroll(function () {
+      if ($win.scrollTop() > header) {
         $('.header__top').addClass('header__top--fixed');
       } else {
         $('.header__top').removeClass('header__top--fixed');
       }
     });
+
   });
 
   //Счетчик цифр в блоке со статистикой
-  var $win = $(window);
   var winHeight = $win.height();
   $win.resize(function () { winHeight = $win.height(); });
   var
@@ -93,8 +102,8 @@ $(function () {
       if (statusDiag == 0 && winBottom > currentPos + 400) {
         $diagramm.each(function () {
           var
-            percent = $(this).data('percent'),
-            that = $(this);
+            that = $(this),
+            percent = that.data('percent');
           that.css({ 'width': percent + '%', 'transition': 'width 2000ms ease 0ms' });
           statusDiag = 1;
         });
@@ -118,9 +127,9 @@ $(function () {
           $span.each(function () {
             var
               i = 1,
-              num = $(this).data('num'),
-              step = 1000 * time / num,
               that = $(this),
+              step = 1000 * time / num,
+              num = that.data('num'),
               int = setInterval(function () {
                 if (i <= num) {
                   that.html(i);
