@@ -278,7 +278,7 @@ body {
   bottom: 0;
   width: 100vw;
   height: 50vh;
-
+  z-index: 2;
 }
 
 .line-inner {
