@@ -1,0 +1,221 @@
+@font-face {
+  font-family: 'Open Sans';
+  src: url('../fonts/opensans/OpenSans-Italic.woff2') format('woff2'),
+       url('../fonts/opensans/OpenSans-Italic.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url('../fonts/opensans/OpenSans-SemiBold.woff2') format('woff2'),
+       url('../fonts/opensans/OpenSans-SemiBold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url('../fonts/opensans/OpenSans-Light.woff2') format('woff2'),
+       url('../fonts/opensans/OpenSans-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url('../fonts/opensans/OpenSans-Bold.woff2') format('woff2'),
+       url('../fonts/opensans/OpenSans-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url('../fonts/opensans/OpenSans-Regular.woff2') format('woff2'),
+       url('../fonts/opensans/OpenSans-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+:root {
+
+  /* ВРЕМЯ АНИМАЦИИ */
+  --a-time: 400ms;
+
+  /* ОСНОВНЫЕ ЦВЕТА */
+  --black-t: #000000;       /* Черный - для текста, используется в форме*/
+  --white-bg: #ffffff;      /* Белый - для фона */
+  --white-t: #ffffff;       /* Белый - для текста */
+  --gray-lite-bg: #f6f6f8;  /* Светло-серый - для фона секций */ 
+  --gray-t: #333333;        /* Темно-серый - для основного текста */ 
+  --gray-bg: #00020d;        /* Темно-серый - для основного текста */ 
+  --blue-t: #2352de;        /* Синий - фирменный, очень часто встречается. Текст */
+  --blue-bg: #2352de;       /* Синий - для декоративных элементов дизайна */
+  --black-rgba:  0, 0, 0,;    /* Черный - для rgba, непрозрачность укажем по месту*/
+  --blue-rgba-05: rgba(35, 82, 222, 0.5); /* Синий - тот же самый цвет но в rgba с непрозрачностью 50% */
+  --white-rgba-05: rgba(255, 255, 255, 0.5); /* Белый - в rgba с непрозрачностью 50% */
+
+  --header-p-top: 75px;     /* Поле вверху хедера */
+  --header-p-bottom: 30px;  /* Поле внизу хедера */
+  --section-p-t: 140px;     /* Поле вверху секции */
+  --section-p-b: 140px;     /* Поле внизу секции */
+  --logo-h: 53px;           /* Высота логотипа */
+  --logo-w: 159px;          /* Ширина логотипа */
+
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+ul,
+ol {
+  padding: 0;
+} 
+
+body,
+h1, 
+h2, 
+h3, 
+h4, 
+h5, 
+h6,
+p,
+ul,
+ol,
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+  color: inherit;
+  border: none;
+  padding: 0;
+  background-color: transparent;
+}
+
+address {
+  font-style: normal;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  color: var(--white-t);
+  background-color: var(--gray-bg);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.box {
+  position: relative;
+  background-color: var(--gray-bg);
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.box::before,
+.box::after {
+  content: '';
+  position: absolute;
+}
+
+.box::before {
+  --size: calc((100vh + 100vw) / 2 * 0.2);
+  width: var(--size);
+  height: var(--size);
+  background: linear-gradient(#f0edcd, #f0edcd);
+  border-radius: 50%;
+  top: 15%;
+  right: 15%;
+  box-shadow: 4px 0px 100px 10px rgba(255, 255, 255, 0.2), -32px -32px 33px 5px rgba(0, 0, 0, 0.2) inset;
+  /* box-shadow: -32px -32px 33px 5px rgba(148, 145, 109, 0.2) inset; */
+}
+
+.box::after {
+  --size: calc((100vh + 100vw) / 2 * 0.4);
+  width: var(--size);
+  height: var(--size);
+  background: linear-gradient(0deg, #030e49, #000);
+  left: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 50vh;
+
+}
+
+.line-inner {
+    --size: calc((100vh + 100vw) / 2 * 0.2);
+  width: var(--size);
+  display: block;
+  /*border:  1px solid #fff;*/
+  height: 20vh;
+  position: absolute;
+  top: 50%;
+  right: 15%;
+  z-index: 2;
+  perspective: 100vw;
+}
+
+.line {
+  --size: calc((100vh + 100vw) / 2 * 0.2);
+  width: var(--size);
+  display: block;
+  /*border:  1px solid #fff;*/
+  height: 500vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  background: radial-gradient(50% 200%, #ffffff, transparent);
+  transform: rotate3d(1, 0, 0, 60deg);
+  transform-origin: 0 0;
+  opacity: 0.2;
+
+}
