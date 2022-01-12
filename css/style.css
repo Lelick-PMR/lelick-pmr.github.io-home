@@ -290,7 +290,7 @@ body {
   position: absolute;
   top: 50%;
   right: 15%;
-  z-index: 2;
+  z-index: 3;
   perspective: 100vw;
 }
 
@@ -303,7 +303,7 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 2;
+  z-index: 3;
   background: radial-gradient(50% 200%, #ffffff, transparent);
   transform: rotate3d(1, 0, 0, 60deg);
   transform-origin: 0 0;
