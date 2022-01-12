@@ -14,17 +14,34 @@
 
 <body>
 
-  <section class="box">
-    <h1 class="box__title">Привет! Меня зовут Алексей Данилов. Я начинающий
-      <span class="box__profession">FrontEnd-разработчик</span>
-    </h1>
-    <p class="box__text">
-      На этой страничке я выкладываю работу, которую я выполнил во время прохождения курсов по веб-верстке.
-    </p>
+  <div class="box-bg">
+    <button class="btn" type="button">
+      <div class="btn__inner">
+        <span class="btn__chek"></span>
+      <span class="btn__text btn__text-on btn__text-off--off">off</span>
+      <span class="btn__text btn__text-off btn__text-on--on">on</span>
+      </div>
+    </button>
+    <span class="stars"></span>
+    <span class="stars2"></span>
     <div class="line-inner">
       <span class="line"></span>
     </div>
-  </section>
+    <div class="wrapper">
+      <header class="header">
+        <div class="container">
+          <div class="header__content ">
+            <h1 class="header__title card">Привет! Меня зовут Алексей. Я начинающий
+              <span class="header__profession">FrontEnd - разработчик</span>
+            </h1>
+            <p class="header__text card">
+              На этой страничке я публикую работу, которую я выполнил во время прохождения курсов по веб-верстке.
+            </p>
+          </div>
+        </div>
+      </header>
+    </div>
+  </div>
 
   <!-- JQuery Ver. 3.6.0 -->
   <script src="js/jquery.min.js"></script>
