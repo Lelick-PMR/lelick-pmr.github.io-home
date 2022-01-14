@@ -12,19 +12,39 @@ $(function () {
   //по которой будем проверять состояние меню,
   //открывать и закрывать меню.
   function burgerMenu(stBur) {
-    var $menu = $('.menu'),
+    var
+      $menu = $('.menu'),
+      $headerTop = $('.header__top'),
       $burger = $('.burger');
     if (statusBurger == 0) {
       $menu.css({ 'top': 0 });
       $burger.addClass('burger--active');
+      $headerTop.addClass('header__top--active');
       statusBurger = stBur;
     } else if (statusBurger == 1) {
       $menu.css({ 'top': '-200vh' });
       $burger.removeClass('burger--active');
+      $headerTop.removeClass('header__top--active');
       statusBurger = stBur;
     }
   }
 
+  //Проверяем ширину окна чтоб отключить стили для меню
+  //при ширине окна больше 992px
+  $win.resize(function () {
+    var
+      winWidth = $win.width() + 17, //+17 добавил на полосу прокрутки! Нужно уточнить! 
+      $menu = $('.menu'),
+      $headerTop = $('.header__top'),
+      $burger = $('.burger');
+    if (winWidth > 992) {  
+      $menu.css({ 'top': '-200vh' });
+      $burger.removeClass('burger--active');
+      $headerTop.removeClass('header__top--active');
+    }
+  });
+
+  //Клик по кнопке
   $doc.on("click", ".burger", function (e) {
     e.preventDefault();
     if (statusBurger == 0) {        //Если меню закрыто, то нужно открыть его,
@@ -52,7 +72,7 @@ $(function () {
     var id = $(this).attr('href');
     var top = $(id).offset().top; // получаем координаты блока
     $('body, html').animate({ scrollTop: top - 63 }, 800); // плавно переходим к блоку -68 временное решение
-    if (statusBurger == 1) {        //Если бургер меню вдруг открыто, то закроем его
+    if (statusBurger == 1) {        //Если бургер меню вдруг открыт, то закроем его
       burgerMenu(0);                //Вызываем функцию, передав в нее параметр "0"
     }
   });
@@ -83,6 +103,7 @@ $(function () {
   });
 
   //Счетчик цифр в блоке со статистикой
+  //И проценты в блоке с Навыками
   var winHeight = $win.height();
   $win.resize(function () { winHeight = $win.height(); });
   var
@@ -127,9 +148,9 @@ $(function () {
           $span.each(function () {
             var
               i = 1,
-              that = $(this),
+              num = $(this).data('num'),
               step = 1000 * time / num,
-              num = that.data('num'),
+              that = $(this),
               int = setInterval(function () {
                 if (i <= num) {
                   that.html(i);
