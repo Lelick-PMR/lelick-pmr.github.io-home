@@ -110,7 +110,7 @@
       но я не математик. 
   */
   --maket-w-val: calc(var(--maket-w-max) - var(--maket-w-min));
-  --disp-w-val: calc(((100vw + 100vh) / 2) - var(--maket-w-min) * 1px);
+  --disp-w-val: calc(100vw - var(--maket-w-min) * 1px);
   --p1: calc(var(--maket-w-val) * 1px - var(--disp-w-val));
 }
 
@@ -204,41 +204,43 @@ body {
   overflow: hidden;
 }
 
-.img-hover {
+.image-animation {
   display: block;
   position: relative;
 }
 
-.img-hover:focus {
+.image-animation:focus {
   outline: transparent;
 }
 
-.img-hover::before {
+.image-animation::before {
   content: '';
   position: absolute;
   width: 100%;
   height: 100%;
   top: 0;
   left: 0;
-  transition: background-color var(--a-time), background-size var(--a-time), box-shadow var(--a-time);
+  transition: background-color, background-size, box-shadow;
+  transition-duration: var(--a-time);
 }
 
-.img-hover:focus::before {
+.image-animation:focus::before {
   box-shadow: 0 0 0 3px var(--blue-rgba-05);
 }
 
-.img-hover:hover::before {
+.image-animation:hover::before {
   background-color: rgba(var(--black-rgba) 0.6);
 }
 
-.img-hover:active::before {
+.image-animation:active::before {
   background-color: rgba(var(--black-rgba) 0.45);
 }
 
 .link-style {
   text-decoration: underline;
   text-decoration-color: transparent;
-  transition: color var(--a-time), text-decoration-color var(--a-time), box-shadow var(--a-time), opacity var(--a-time);   
+  transition: color, text-decoration-color, box-shadow, opacity;
+  transition-duration: var(--a-time);  
 }
 
 .link-style:focus {
@@ -314,6 +316,12 @@ body {
 
 }
 
+.header__top--active {
+  background-color: transparent;
+  bottom: 0;
+  overflow-y: auto;
+}
+
 .header__navigation {
   display: flex;
   justify-content: space-between;
@@ -322,7 +330,8 @@ body {
 
 .logo {
   width: var(--logo-w);
-  transition: opacity var(--a-time), box-shadow var(--a-time);
+  transition: opacity, box-shadow;
+  transition-duration: var(--a-time);
   z-index: 10;
 }
 
@@ -364,7 +373,8 @@ body {
   height: 2px;
   width: 30px;
   background-color: var(--white-bg);  
-  transition: transform var(--a-time), top var(--a-time), bottom var(--a-time);
+  transition: transform, top, bottom;
+  transition-duration: var(--a-time);
 }
 
 .burger::before {
@@ -463,7 +473,7 @@ body {
   padding: var(--section-p-t) 0;
 }
 
-.padding-b {
+.padding-bottom {
   padding-bottom: var(--section-p-b);
 }
 
@@ -634,7 +644,8 @@ body {
   background-color: var(--blue-bg);
   border: 1px solid var(--blue-bg);
   color: var(--white-t);
-  transition: color var(--a-time), box-shadow var(--a-time), background-color var(--a-time);
+  transition: color, box-shadow, background-color;
+  transition-duration: var(--a-time);
 }
 
 .btn:focus {
@@ -668,7 +679,7 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 3px 50px 0;
-  margin-bottom: 60px;
+  margin-bottom: 40px;
 }
 
 .reviews__text {
@@ -751,7 +762,7 @@ body {
   border-radius: 50%;
   border: 2px solid transparent;
   background-color: var(--blue-bg);
-  transition: background-color var(--a-time), border var(--a-time);
+  transition: background-color, border;
 }
 
 .slick-active button {
@@ -766,6 +777,8 @@ body {
 }
 
 .statistics__item {
+  display: flex;
+  flex-direction: column;
   flex: 1 1 265px;
   position: relative;
   width: 280px;
@@ -785,6 +798,7 @@ body {
   height: 80px;
   background-repeat: no-repeat;
   background-position: center;
+  background-size: contain;
   top: 50px;
   left: 0;
 }
@@ -810,8 +824,11 @@ body {
 }
 
 .statistics__name {
-  display: block;
+  display: flex;
   line-height: 1.3;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
   margin-bottom: 20px;
 }
 
@@ -871,7 +888,8 @@ body {
   display: block;
   width: 44px;
   height: 44px;
-  transition: box-shadow var(--a-time), opacity var(--a-time);
+  transition: box-shadow, opacity;
+  transition-duration: var(--a-time);
 }
 
 .social__link:focus {
@@ -967,7 +985,7 @@ body {
   padding: 50px 0;
 }
 
-/* 1200 - WXVGA******/
+/*********1200 - WXVGA******/
 @media (max-width: 1200px) {
 
   .header__text {
@@ -994,7 +1012,7 @@ body {
     --section-p-t: var(--value);
   }
 
-  .padding-b {
+  .padding-bottom {
     /* Нижние отступы секций от 140px до 50px */
     --value: calc(var(--max-val) * 1px - (var(--p1) * (var(--max-val) - var(--min-val)) / var(--maket-w-val))); 
     --max-val: 140;
@@ -1028,85 +1046,14 @@ body {
 
 }
 
-/* 992 - qHD*********/
+/*********992 - qHD*********/
 @media (max-width: 992px) {
-
-  .menu__link {
-    display: flex;
-    align-items: center;
-    height: 44px;
-  }
-
-  .services__list {
-    flex-wrap: wrap;
-  }
-
-  .services__item {
-    /* ШПАРГАЛКА ДЛЯ СЕБЯ Жадность элементов flex: 1 1 auto;
-    flex-grow: 1; - равномерно делим пространство, 
-    flex-shrink: 1; - равномерно сжимаем элементы 
-    flex-basis: ; - в данном случае не учавствует*/
-    flex: 1 1; 
-    max-width: 100%;
-    text-align: start;
-    margin-bottom: 30px;
-  } 
-
-  .services__title {
-    margin-bottom: 20px;
-  }
-  
-  .reviews__slide {
-    padding: 0 22px;
-    justify-content: center;
-  }
-
-  .reviews__photo {
-    margin: 0 auto 30px;
-  }
-  
-  .video {
-    position: absolute;
-    height: 60px;
-    width: 60px;
-    border-radius: 50%;
-    top: 90px;
-    left: 50%;
-    transform: translate(42%, 0);
-  }
-
-  .video::before {
-    border-radius: 50%;
-    background-size: 17px;
-  }
-
-  .video:hover::before {
-    background-size: 20px;
-  }
-}
-
-/* 874**************/
-@media (max-width: 874px) {
-  /* Присвоим новые значения глобальным переменным */
+    /* Присвоим новые значения глобальным переменным */
   :root {
     --logo-h: 36px;           /* Ширина лого */
     --logo-w: 110px;          /* Высота лого */ 
     --header-p-top: 15px;     /* Поле вверху хедера */
     --header-p-bottom: 15px;  /* Поле внизу хедера */
-  }
-
-  .container {
-    text-align: center;
-    overflow-x: hidden;
-  }
-
-  .container--statistics {
-    padding: 0 7px;
-  }
-
-  .burger {
-    display: flex;
-    z-index: 10;
   }
 
   .header__top {
@@ -1115,6 +1062,11 @@ body {
 
   .header__top--fixed {
     padding: 0;
+  }
+ 
+  .burger {
+    display: flex;
+    z-index: 10;
   }
 
   .menu {
@@ -1132,7 +1084,7 @@ body {
     z-index: 1;
     transition: top;
     transition-duration: 600ms;
-    transition-timing-function: cubic-bezier(0.22, 0.61, 0.34, 0.9);
+    transition-timing-function: cubic-bezier(0, 0, 0, 0);
     transition-delay: 0s;
   }
 
@@ -1170,6 +1122,93 @@ body {
 
   .header__link::after {
     top: 27px;
+  }
+
+  .services__list {
+    flex-wrap: wrap;
+  }
+
+  .services__item {
+    flex: 1 1; 
+    max-width: 100%;
+    text-align: start;
+  } 
+
+  .services__item:not(:last-child) {
+    margin-bottom: 30px;
+  }
+  
+  .filter__btn {
+    width: 100%;
+    padding: 5px 0;
+  }
+
+  .services__title {
+    margin-bottom: 20px;
+  }
+  
+  .reviews__slide {
+    padding: 0 22px;
+    justify-content: center;
+  }
+
+  .reviews__photo {
+    margin: 0 auto 30px;
+  }
+  
+  .video {
+    position: absolute;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    top: 90px;
+    left: 50%;
+    transform: translate(42%, 0);
+  }
+
+  .video::before {
+    border-radius: 50%;
+    background-size: 17px;
+  }
+
+  .video:hover::before {
+    background-size: 20px;
+  }
+
+  .contacts__item {
+    margin-bottom: 10px;
+  }
+
+  .contacts__item:last-child {
+    margin-bottom: 17px;
+  }
+
+  .contacts__link {
+    font-size: 16px;
+    line-height: 1.3;
+    color: var(--blue-t);
+    padding: 11px 0;
+  }
+
+  .contacts__link:focus {
+    box-shadow: 0 0 0 2px var(--blue-rgba-05);
+  }
+
+  .footer {
+    padding: 32px 0;
+  }
+}
+
+/*********768**************/
+@media (max-width: 768px) {
+
+  .container {
+    text-align: center;
+    overflow-x: hidden;
+  }
+
+  .container--statistics {
+    padding: 0 7px;
   }
 
   .skills__inner {
@@ -1222,12 +1261,6 @@ body {
 
   .filter__item:not(:last-child) {
     margin-right: 0px;
-    margin-bottom: 15px;
-  }
-
-  .filter__btn {
-    width: 100%;
-    height: 44px;
   }
 
   .statistics__item {
@@ -1245,12 +1278,9 @@ body {
     max-width: 100%;
   }
 
-  .footer {
-    padding: 32px 0;
-  }
 }
 
-/* 576**************/
+/*********576**************/
 @media (max-width: 576px) {
 
   body {
@@ -1311,16 +1341,22 @@ body {
     margin-bottom: 15px;
   }
   
-  .services__item--icon-cms::before,
-  .services__item--icon-markup::before,
-  .services__item--icon-support::before {
+  .services__item::before {
     height: 40px;
     width: 40px;
   }
 
+  .filter {
+    margin-bottom: 18px;
+  }
+
   .filter__btn {
     font-size: 18px;
-    height: 30px;
+    padding: 7px 0;
+  }
+
+  .portfolio__inner {
+    margin-bottom: 20px;
   }
 
   .reviews__text {
@@ -1332,21 +1368,18 @@ body {
     font-size: 20px;
   }
 
+  .reviews__slide {
+    margin-bottom: 20px;
+  }
+
   .statistics__item {
-    display: flex;
-    flex-direction: column;
     flex: 1 1 160px;
-    max-width: 100%;
     padding: 70px 15px 22px;
-    justify-content: space-between;
   }
 
   .statistics__item::before {
-    content: '';
-    position: absolute;
     height: 35px;
     top: 25px;
-    background-size: contain;
   }
 
   .statistics__name {
