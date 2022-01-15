@@ -29,8 +29,7 @@
 
 <body id="top">
 
-  <header class="header" style="background-image: url('images/header_bg.jpg');">
-    <div class="header__top">
+  <header class="header">
       <div class="container">
         <nav class="header__navigation">
 
@@ -71,27 +70,28 @@
             </li>
           </ul>
           <button class="burger" type="button">
-            <span class="sr-only">Кнопка, открывает главное меню</span>
+            <span class="sr-only">Кнопка, открывает и закрывает главное меню</span>
             <span class="burger__line"></span>
           </button>
         </nav>
       </div>
-    </div>
-
-    <div class="container">
-      <div class="header__content">
-        <h1 class="header__text">
-          Привет, я Иван Иванов
-          <span class="header__profession">
-            frontend-разработчик
-          </span>
-        </h1>
-        <a class="link-style header__link" href="#portfolio">смотреть работы</a>
-      </div>
-    </div>
   </header>
 
   <main class="main">
+
+    <section class="hero" style="background-image: url('images/header_bg.jpg');">
+      <div class="container">
+        <div class="hero__content">
+          <h1 class="hero__text">
+            Привет, я Иван Иванов
+            <span class="hero__profession">
+              frontend-разработчик
+            </span>
+          </h1>
+          <a class="link-style hero__link" href="#portfolio">смотреть работы</a>
+        </div>
+      </div>
+    </section>
 
     <section class="about paddings" id="about">
       <div class="container">
@@ -470,7 +470,6 @@
       <img class="logo__img" src="images/logo.svg" alt="Логотип FrontEnd-разработчика">
     </a>
   </footer>
-  <!-- JQuery Ver. 3.6.0 -->
   <script src="js/jquery.min.js"></script>
   <script src="js/jquery.fancybox.min.js"></script>
   <script src="js/mixitup.min.js"></script>
