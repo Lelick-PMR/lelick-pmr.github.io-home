@@ -6,7 +6,7 @@ $(function () {
   var statusContent = 1;
 
   var boxshadow = "";
-  for (var i = 0; i <= 500; i++) {
+  for (var i = 0; i <= 400; i++) {
     px = Math.random() < 0.5 ? "-" : "";
     py = Math.random() < 0.5 ? "-" : "";
     x = Math.floor((Math.random() * window.innerWidth) + 1);
@@ -18,7 +18,7 @@ $(function () {
   $('.stars').css({ 'box-shadow': boxshadow });
 
   var boxshadow2 = "";
-  for (var j = 0; j <= 500; j++) {
+  for (var j = 0; j <= 400; j++) {
     px = Math.random() < 0.5 ? "-" : "";
     py = Math.random() < 0.5 ? "-" : "";
     x = Math.floor((Math.random() * window.innerWidth) + 1);
@@ -57,10 +57,10 @@ $(function () {
 
   $doc.on("click", ".btn", function (e) {
     e.preventDefault();
-    if (statusContent == 1) {  
-      contentButton(0);  
-    } else if (statusContent == 0) { 
-      contentButton(1);                
+    if (statusContent == 1) {
+      contentButton(0);
+    } else if (statusContent == 0) {
+      contentButton(1);
     }
   });
 });
