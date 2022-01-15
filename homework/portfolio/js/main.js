@@ -14,17 +14,19 @@ $(function () {
   function burgerMenu(stBur) {
     var
       $menu = $('.menu'),
-      $headerTop = $('.header__top'),
+      $body = $('body'),
       $burger = $('.burger');
     if (statusBurger == 0) {
+      $body.css({ 'overflow-y': 'hidden' });
       $menu.css({ 'top': 0 });
       $burger.addClass('burger--active');
-      $headerTop.addClass('header__top--active');
+      $menu.addClass('menu--active');
       statusBurger = stBur;
     } else if (statusBurger == 1) {
+      $body.css({ 'overflow-y': 'auto' });
       $menu.css({ 'top': '-200vh' });
       $burger.removeClass('burger--active');
-      $headerTop.removeClass('header__top--active');
+      $menu.removeClass('menu--active');
       statusBurger = stBur;
     }
   }
@@ -33,14 +35,17 @@ $(function () {
   //при ширине окна больше 992px
   $win.resize(function () {
     var
-      winWidth = $win.width() + 17, //+17 добавил на полосу прокрутки! Нужно уточнить! 
-      $menu = $('.menu'),
-      $headerTop = $('.header__top'),
-      $burger = $('.burger');
-    if (winWidth > 992) {  
-      $menu.css({ 'top': '-200vh' });
-      $burger.removeClass('burger--active');
-      $headerTop.removeClass('header__top--active');
+      winWidth = $win.width() + 17; //+17 добавил на полосу прокрутки! Нужно уточнить! 
+      //$menu = $('.menu'),
+      //$body = $('body'),
+      //$burger = $('.burger');
+    if (winWidth > 992 && statusBurger == 1) {  
+      burgerMenu(0);
+      //Пока ищем баги, закомментированный код оставляем
+      //$body.css({ 'overflow-y': 'auto' });
+      //$menu.css({ 'top': '-200vh' });
+      //$burger.removeClass('burger--active');
+      //$menu.removeClass('menu--active');
     }
   });
 
@@ -71,7 +76,7 @@ $(function () {
     e.preventDefault();
     var id = $(this).attr('href');
     var top = $(id).offset().top; // получаем координаты блока
-    $('body, html').animate({ scrollTop: top - 63 }, 800); // плавно переходим к блоку -68 временное решение
+    $('body, html').animate({ scrollTop: top - 63 }, 1500); // плавно переходим к блоку -68 временное решение
     if (statusBurger == 1) {        //Если бургер меню вдруг открыт, то закроем его
       burgerMenu(0);                //Вызываем функцию, передав в нее параметр "0"
     }
@@ -84,19 +89,19 @@ $(function () {
   //не знаю как правильно но пока так пофиксил
   var header = $('body, html').offset().top;
   if ($win.scrollTop() > header) {
-    $('.header__top').addClass('header__top--fixed');
+    $('.header').addClass('header--fixed');
   }
 
   //А тут уже применяем класс при скролле
   $doc.ready(function () {
     if ($win.scrollTop() > header) {
-      $('.header__top').addClass('header__top--fixed');
+      $('.header').addClass('header--fixed');
     }
     $win.scroll(function () {
       if ($win.scrollTop() > header) {
-        $('.header__top').addClass('header__top--fixed');
+        $('.header').addClass('header--fixed');
       } else {
-        $('.header__top').removeClass('header__top--fixed');
+        $('.header').removeClass('header--fixed');
       }
     });
 
