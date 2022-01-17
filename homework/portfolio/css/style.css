@@ -244,7 +244,7 @@ body {
 }
 
 .link-style:focus {
-  outline: transparent;
+
   border-radius: 3px;
   box-shadow: 0 0 0 2px var(--white-rgba-05);
 }
