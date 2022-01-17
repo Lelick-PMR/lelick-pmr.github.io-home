@@ -246,7 +246,7 @@ body {
 .link-style:focus {
 
   border-radius: 3px;
-  box-shadow: 0 0 0 2px var(--white-rgba-05);
+
 }
 
 .link-style:hover {
