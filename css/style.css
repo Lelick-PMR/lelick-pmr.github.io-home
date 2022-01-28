@@ -155,8 +155,7 @@ body {
 } 
 
 .top {
-  display: block;
-  z-index: 999;
+  display: flex;
 }
 
 .btn {
@@ -167,6 +166,7 @@ body {
   padding: 10px 0;
   text-transform: uppercase;
   align-items: center;
+  z-index: 50;
 }
 
 .btn-label {
