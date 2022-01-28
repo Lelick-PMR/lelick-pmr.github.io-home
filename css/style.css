@@ -254,6 +254,16 @@ body {
   overflow: hidden;
 }
 
+.ground {
+  position: absolute;
+  width: 50vw;
+  height: 50vw;
+  top: 50%;
+  left: 50%;
+  background-color: #333;
+  transform: translateX(-150%) skewX(-60deg);
+}
+
 .moon {
   --size: calc((100vh + 100vw) / 2 * 0.2);
   position: absolute;
@@ -382,7 +392,7 @@ body {
 }
 
 .wrapper {
-  display: none; /* block; */
+  display: block; /* block; */
   /* background-color: rgba(255, 255, 255, 0.5);*/
   position: absolute;
   top: 70px;
@@ -557,6 +567,44 @@ body {
   transform: translateY(0) rotateX(90deg);
   background: #333;
 }
+
+.header__test {
+  padding: 30px;
+}
+
+.header__link { 
+  display: inline-flex;
+  color: green;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.header__link:focus {
+  color: red;
+  outline: transparent;
+}
+
+.header__link:focus .header__link-text {
+  border-radius: 6px;
+  box-shadow: 0px 0px 0px 3px rgba(255, 255, 255, 0.5)
+}
+
+.header__link:hover {
+  color: white;
+}
+
+.header__link:hover .header__svg {
+  fill: white;
+}
+
+.header__svg {
+  height: 32px;
+  width: 32px;
+  fill: green;
+  margin-right: 15px;
+}
+
+.header__link-text {}
 
 /*
 @keyframes rotate {
