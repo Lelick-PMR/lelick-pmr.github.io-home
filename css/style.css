@@ -155,7 +155,7 @@ body {
 } 
 
 .top {
-  display: flex;
+  display: block;
 }
 
 .btn {
