@@ -25,14 +25,14 @@
         <span class="moon-reflection"></span>
       </div>
       <div class="line-inner">
-        <span class="line"></span>
+   <span class="line"></span>
       </div>
-      <span class="gray-line"></span>
+   <!-- <span class="gray-line"></span> -->
     </div>
 
 
     <div class="perspective">
-
+<!--
       <div class="home" style="
                           --size: calc(100vw / 2 * 3); 
                           --w: calc(var(--size) * 2);
@@ -51,7 +51,7 @@
         <div class="home__wall-right side"></div>
       </div>
 
-<!--
+
    <div class="home" style="
                           --size: calc(100vw / 2); 
                           --w: calc(var(--size) * 10);
@@ -62,6 +62,8 @@
         <div class="home__wall-right side"></div>
       </div>
   -->
+  
+  <div class="ground"></div>
   
       <div class="home" style="
                           --size: calc(100vw / 2 * 0.2); 
@@ -74,7 +76,7 @@
         <div class="home__wall-front side"></div>
       </div>
   
-<div class="home" style="
+      <div class="home" style="
                                 --size: calc(100vw / 2 * 0.2); 
                                 --w: calc(var(--size));
                                 --h: calc(var(--size) * 2);
@@ -145,6 +147,15 @@
             <p class="header__text card">
               На этой страничке я публикую работы, которые я выполнил во время прохождения курсов по веб-верстке.
             </p>
+            
+            <p class="header__test card">
+              <a href="" class="header__link">
+                <svg class="header__svg">
+                  <use xlink:href="images/sprite.svg#icon-del"></use>
+                </svg>
+                <span class="header__link-text">Доставка</span>
+              </a>
+              </p>
           </div>
         </div>
       </header>
